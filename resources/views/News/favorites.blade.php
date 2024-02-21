@@ -25,11 +25,11 @@
 <main>
     
             <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-            <div class="relative min-h-screen flex flex-wrap gap-6 items-center justify-center ">
+            <div class=" min-h-screen flex flex-wrap gap-6 items-center justify-center ">
                 <div class="max-w-md w-full shadow-lg hover:shadow-2xl rounded-xl p-6">
                     <div class="">
                         <div class="">
-                            <div class="relative h-62 w-full mb-3">
+                            <div class=" h-62 w-full mb-3">
                                 <div class="absolute flex flex-col top-0 right-0 p-3">
                                     <button
                                         class="transition ease-in duration-300 bg-gray-800  hover:text-red-500 shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1">
@@ -108,6 +108,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="max-w-md w-full shadow-lg hover:shadow-2xl rounded-xl p-6">
                     <div class="">
                         <div class="">
