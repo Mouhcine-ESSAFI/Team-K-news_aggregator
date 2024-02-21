@@ -5,10 +5,9 @@
             <div class="tc uf ap gg fp">
                 <div class="animate_top zd/2 to/4">
                     <a href="index.html">
-                        <img src="images/logo-light.svg" alt="Logo" class="om" />
-                        <img src="images/logo-dark.svg" alt="Logo" class="xc nm" />
+                        <img src="/resources/images/logo-light.svg" alt="Logo" class="om" />
+                        <img src="/resources/images/logo-dark.svg" alt="Logo" class="xc nm" />
                     </a>
-
                     <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
                     <ul class="tc wf cg">

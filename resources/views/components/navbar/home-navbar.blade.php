@@ -47,7 +47,7 @@
                                 fill="" />
                         </svg>
                         <!-- Icon Sun -->
-                        <img class="xc nm" src="images/icon-moon.svg" alt="Moon" />
+                        <img class="xc nm" src="/resources/images/icon-moon.svg" alt="Moon" />
                     </label>
                 </div>
 
