@@ -29,7 +29,7 @@
                 <ul class="tc _o sf yo cg ep">
                     <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
                     <li><a href="index.html#features" class="xl">Features</a></li>
-                    <li><a href="index.html#features" class="xl">Favorites</a></li>
+                    <li><a href="/favorites" class="xl">Favorites</a></li>
                     <li><a href="index.html#features" class="xl">Collection</a></li>
                     <li><a href="index.html#support" class="xl">Support</a></li>
                 </ul>
