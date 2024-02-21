@@ -17,10 +17,20 @@ Route::get('/', function () {
     return view('homePage');
 });
 
+
+
+Route::get('/favorites', function () {
+    return view('News.favorites');
+});
 Route::get('/login', function(){
     return view('Authentication.authentication');
 });
 
 Route::get('/register', function(){
     return view('Authentication.authentication');
+
+});
+
+Route::get('/collection', function () {
+    return view('News.collectionPage');
 });
