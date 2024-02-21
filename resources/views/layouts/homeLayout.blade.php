@@ -19,7 +19,7 @@
 
 
 <!-- ===== Navbar Start ===== -->
-<x-navbar.home-navbar/>
+    <x-navbar.home-navbar/>
 <!-- ===== Navbar End ===== -->
 
 
@@ -68,6 +68,7 @@
         };
     };
 </script>
+<script src="./resources/js/image-register.js"></script>
 <script defer src="./resources/js/bundle.js"></script>
 </body>
 </html>
