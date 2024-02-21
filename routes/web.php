@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('homePage');
 });
+
+
+Route::get('/favorites', function () {
+    return view('News.favorites');
+});
