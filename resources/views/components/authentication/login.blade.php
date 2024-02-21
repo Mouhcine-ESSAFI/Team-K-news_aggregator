@@ -129,7 +129,7 @@
 
                 <p class="sj hk xj rj ob">
                     Don't have an account?
-                    <a class="mk" href="signup.html"> Sign Up </a>
+                    <a class="mk" href="/register"> Sign Up </a>
                 </p>
             </form>
         </div>

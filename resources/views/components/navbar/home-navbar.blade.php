@@ -2,7 +2,7 @@
         @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
     <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
         <div class="vd to/4 tc wf yf">
-            <a href="index.html">
+            <a href="/">
                 <img class="om" src="/resources/images/logo-light.svg" alt="Logo Light" />
                 <img class="xc nm" src="/resources/images/logo-dark.svg" alt="Logo Dark" />
             </a>
@@ -27,13 +27,12 @@
         <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
             <nav>
                 <ul class="tc _o sf yo cg ep">
-                    <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
-                    <li><a href="index.html#features" class="xl">Features</a></li>
-                    <li><a href="/favorites" class="xl">Favorites</a></li>
-                    <li><a href="index.html#features" class="xl">Collection</a></li>
-                    <li><a href="index.html#features" class="xl">Favorites</a></li>
-                    <li><a href="/collection" class="xl">Collection</a></li>
-                    <li><a href="index.html#support" class="xl">Support</a></li>
+                    <li><a href="/" class="text-black" :class="{ 'mk': page === 'home','ts': darkMode === true }">Home</a></li>
+                    <li><a href="/#features" :class="{'ts': darkMode === true}" class="text-black">Features</a></li>
+                    <li><a href="/favorites" :class="{'ts': darkMode === true}" class="text-black">Favorites</a></li>
+                    <li><a href="/collection" :class="{'ts': darkMode === true}" class="text-black">Collection</a></li>
+                    <li><a href="/#support" :class="{'ts': darkMode === true}" class="text-black">Support</a></li>
+                    
                 </ul>
             </nav>
 
@@ -53,9 +52,10 @@
                     </label>
                 </div>
 
-                <a href="signin.html" :class="{ 'yl' : page === 'home', 'ok' : page === 'home' && stickyMenu }"
-                   class="text-gray-500">Sign In</a>
-                <a href="signup.html" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
+                <a href="/login" class="flex gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 py-3 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-gray-500 hover:border-gray-800 hover:from-black hover:to-gray-900">
+                    Sign In
+                </a>
+                <a href="/register" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
                    class="lk bg-blue-500 dk rg tc wf xf _l gi hi">Sign Up</a>
 
             </div>
