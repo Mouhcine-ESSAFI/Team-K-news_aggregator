@@ -30,3 +30,7 @@ Route::get('/register', function(){
     return view('Authentication.authentication');
 
 });
+
+Route::get('/collection', function () {
+    return view('News.collectionPage');
+});

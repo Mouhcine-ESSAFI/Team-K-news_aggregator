@@ -31,6 +31,8 @@
                     <li><a href="index.html#features" class="xl">Features</a></li>
                     <li><a href="/favorites" class="xl">Favorites</a></li>
                     <li><a href="index.html#features" class="xl">Collection</a></li>
+                    <li><a href="index.html#features" class="xl">Favorites</a></li>
+                    <li><a href="/collection" class="xl">Collection</a></li>
                     <li><a href="index.html#support" class="xl">Support</a></li>
                 </ul>
             </nav>
