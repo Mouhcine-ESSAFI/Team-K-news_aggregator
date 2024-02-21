@@ -51,10 +51,11 @@
                     </label>
                 </div>
 
-                <a href="signin.html" :class="{ 'nk yl' : page === 'home', 'ok' : page === 'home' && stickyMenu }"
-                   class="ek pk xl">Sign In</a>
+                <a href="signin.html" :class="{ 'yl' : page === 'home', 'ok' : page === 'home' && stickyMenu }"
+                   class="text-gray-500">Sign In</a>
                 <a href="signup.html" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
-                   class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+                   class="lk bg-blue-500 dk rg tc wf xf _l gi hi">Sign Up</a>
+
             </div>
         </div>
     </div>
