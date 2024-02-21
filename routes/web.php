@@ -18,6 +18,15 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/favorites', function () {
     return view('News.favorites');
+});
+Route::get('/login', function(){
+    return view('Authentication.authentication');
+});
+
+Route::get('/register', function(){
+    return view('Authentication.authentication');
+
 });
