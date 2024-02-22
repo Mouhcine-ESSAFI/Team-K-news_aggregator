@@ -5,49 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0" rel="stylesheet">
-    <style>
-        /* Custom CSS */
-        .max-h-600 {
-            max-height: 600px;
-        }
-    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto">
-        <div class="flex">
+<body>
+    <div class="container-fluid">
+        <div class="row">
             <!-- Sidebar -->
-            <div class="w-1/4 bg-gray-200 h-screen border-r border-gray-400">
-                <h2 class="py-4 px-6">Sidebar</h2>
+            <div class="col-md-3 bg-light">
+                <h2>Sidebar</h2>
             </div>
 
             <!-- Main Content -->
-            <div class="w-3/4">
-                <h1 class="text-2xl font-bold mt-4 ml-4">Main Content</h1>
+            <div class="col-md-9">
+                <h1>Main Content</h1>
                 <!-- Add Category button -->
-                <div class="flex justify-end mt-4 mr-4">
+                <div class="d-flex justify-content-end mt-3">
                     <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#addProductModal">
                         Add Category
                     </button>
                 </div>
-                <div class="max-h-600 overflow-y-auto border border-gray-400 rounded-lg p-6 mt-4 mr-4">
-                    <ul class="list-disc list-inside">
+                <div class="overflow-auto border rounded p-3 mt-3" style="max-height: calc(95vh - 100px);">
+                    <ul class="list-unstyled">
                         <!-- Display categories here -->
-                        <li class="flex items-center justify-between">
-                            <span>Sport</span>
-                            <button class="btn btn-danger ml-auto delete-category">Delete</button>
-                        </li>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
                         <hr>
-                        <li>Sport <button class="btn btn-danger delete-category">Delete</button></li>
-                            <hr>
-                            <li>Sport <button class="btn btn-danger delete-category">Delete</button></li>
-                            <hr>
-                            <li>Sport <button class="btn btn-danger delete-category">Delete</button></li>
-                            <hr>
-                            <li>Sport <button class="btn btn-danger delete-category">Delete</button></li>
-                            <hr>
-                            <li>Sport <button class="btn btn-danger delete-category">Delete</button></li>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
+                        <hr>
+                        <li class="d-flex justify-content-between align-items-center mb-2">Sport <button class="btn btn-danger delete-category">Delete</button></li>
                         <!-- Add more categories dynamically -->
                     </ul>
                 </div>
@@ -70,10 +63,10 @@
                     <form action="" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label class="block">Name</label>
-                            <input type="text" class="form-control w-full" name="name">
+                            <label for="categoryName">Name</label>
+                            <input type="text" class="form-control" id="categoryName" name="name">
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Category</button>
+                        <button type="submit" class="btn btn-primary"><b>Save</b></button>
                     </form>
                 </div>
             </div>
