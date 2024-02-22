@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Categories;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Categories::all();
         return view('admin.category', compact('categories'));
     }
 
@@ -19,7 +19,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255|unique:categories,name'
         ]);
 
-        Category::create([
+        Categories::create([
             'name' => $request->name
         ]);
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Categories::findOrFail($id);
         $category->delete();
 
         return redirect()->route('home');
