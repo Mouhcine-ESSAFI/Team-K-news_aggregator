@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\categoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,19 @@ Route::get('/favorites', function () {
 });
 Route::get('/login', function(){
     return view('Authentication.authentication');
-});
+})->name('login');
 
 Route::get('/register', function(){
     return view('Authentication.authentication');
 
 });
+
+Route::get('/preferences', [categoryController::class,'displayCategories'])->name('preferences.show');
+
+// Route::get('/preferences', function(){
+//     return view('Authentication.authentication');
+
+// });
 
 Route::get('/collection', function () {
     return view('News.collectionPage');
