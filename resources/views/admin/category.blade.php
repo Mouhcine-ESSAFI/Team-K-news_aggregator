@@ -25,21 +25,11 @@
                 </div>
                 <div class="overflow-auto border rounded p-3 mt-3" style="max-height: calc(95vh - 100px);">
                     <ul class="list-unstyled">
-                        <!-- Display categories here -->
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <!-- Add more categories dynamically -->
+                        <!-- Display categories dynamically -->
+                        @foreach($categories as $category)
+                            <li class="d-flex justify-content-between align-items-center mb-2"><b>{{ $category->name }}</b><form action="{{ route('category.destroy', $category->id) }}" method="POST">@csrf @method('DELETE') <button type="submit" class="btn btn-danger">Delete</button></form></li>
+                            <hr>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -58,7 +48,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Category form goes here -->
-                    <form action="" method="POST">
+                    <form action="{{ route('category.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="categoryName">Name</label>
@@ -76,13 +66,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            // Delete category
-            $(".delete-category").click(function () {
-                $(this).parent().remove();
-            });
-        });
-    </script>
 </body>
 </html>
