@@ -34,3 +34,7 @@ Route::get('/register', function(){
 Route::get('/collection', function () {
     return view('News.collectionPage');
 });
+
+Route::get('/trends', function () {
+    return view('News.tendancePage');
+});
