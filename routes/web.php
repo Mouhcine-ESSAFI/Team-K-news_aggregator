@@ -29,12 +29,22 @@ Route::get('/login', function(){
 
 Route::get('/register', function(){
     return view('Authentication.authentication');
-
 });
 
 Route::get('/collection', function () {
     return view('News.collectionPage');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/Rss', function () {
+    return view('dashboard');
+});
+
+Route::get('/category', function () {
+    return view('dashboard');
 
 Route::get('/trends', function () {
     return view('News.tendancePage');
