@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\preferenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +34,8 @@ Route::get('/register', function(){
 });
 
 Route::get('/preferences', [CategoryController::class,'displayCategories'])->name('preferences.show');
+Route::post('/preferences', [preferenceController::class,'addPreference'])->name('preferences.add');
 
-// Route::get('/preferences', function(){
-//     return view('Authentication.authentication');
-
-// });
 
 Route::get('/collection', function () {
     return view('News.collectionPage');
