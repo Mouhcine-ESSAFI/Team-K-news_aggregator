@@ -39,8 +39,6 @@
                         <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
                         <hr>
                         <li class="d-flex justify-content-between align-items-center mb-2"><b>Sport</b><button class="btn btn-danger delete-category">Delete</button></li>
-                        <hr>
-                        <li class="d-flex justify-content-between align-items-center mb-2">Sport <button class="btn btn-danger delete-category">Delete</button></li>
                         <!-- Add more categories dynamically -->
                     </ul>
                 </div>
