@@ -35,6 +35,6 @@ Route::get('/collection', function () {
     return view('News.collectionPage');
 });
 
-Route::get('/tendance', function () {
+Route::get('/trends', function () {
     return view('News.tendancePage');
 });
