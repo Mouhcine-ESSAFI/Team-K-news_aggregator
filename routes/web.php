@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\categoryController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Http\Controllers\categoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+Route::get('/', [CategoryController::class, 'index'])->name('home');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
 
@@ -32,7 +32,7 @@ Route::get('/register', function(){
 
 });
 
-Route::get('/preferences', [categoryController::class,'displayCategories'])->name('preferences.show');
+Route::get('/preferences', [CategoryController::class,'displayCategories'])->name('preferences.show');
 
 // Route::get('/preferences', function(){
 //     return view('Authentication.authentication');
