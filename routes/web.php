@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RssManage;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +44,14 @@ Route::get('/Rss', function () {
     return view('dashboard');
 });
 
-Route::get('/category', function () {
+Route::get('/category', function (){
     return view('dashboard');
+});
 
 Route::get('/trends', function () {
     return view('News.tendancePage');
 });
+
+
+// rss add and show
+Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
