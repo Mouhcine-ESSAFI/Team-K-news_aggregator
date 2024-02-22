@@ -8,7 +8,14 @@
     <title>Aggregator | @yield('title')</title>
     <link rel="icon" href="favicon.ico">
     <link href="./resources/css/style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
+
+    <!-- Inclure la bibliothèque Slick Carousel -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
 </head>
 
 <body x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -30,7 +37,6 @@
 <x-footer.home-footer/>
 <!-- ===== Footer End ===== -->
 
-<!-- ===== Home End ===== -->
 <script>
     //  Pricing Table
     const setup = () => {
@@ -68,7 +74,38 @@
         };
     };
 </script>
-<script src="./resources/js/image-register.js"></script>
 <script defer src="./resources/js/bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+<!-- Inclure jQuery (requis pour Slick Carousel) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Inclure la bibliothèque Slick Carousel -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<!-- Script d'initialisation du carrousel -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.carousel').slick({
+            slidesToShow: 3, // Affiche trois cartes à la fois
+            slidesToScroll: 1, // Défile d'une carte à la fois
+            autoplay: true, // Désactiver la lecture automatique
+            dots: true, // Afficher les indicateurs de pagination
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2 // Si l'écran est inférieur à 1024px, afficher deux cartes à la fois
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1 // Si l'écran est inférieur à 768px, afficher une carte à la fois
+                    }
+                }
+            ]
+        });
+    });
+</script>
 </body>
 </html>
