@@ -28,11 +28,12 @@
             <nav>
                 <ul class="tc _o sf yo cg ep">
                     <li><a href="/" class="text-black" :class="{ 'mk': page === 'home','ts': darkMode === true }">Home</a></li>
+                    <li><a href="/tendances" :class="{'ts': darkMode === true}" class="text-black">Tendance</a></li>
                     <li><a href="/#features" :class="{'ts': darkMode === true}" class="text-black">Features</a></li>
                     <li><a href="/favorites" :class="{'ts': darkMode === true}" class="text-black">Favorites</a></li>
                     <li><a href="/collection" :class="{'ts': darkMode === true}" class="text-black">Collection</a></li>
                     <li><a href="/#support" :class="{'ts': darkMode === true}" class="text-black">Support</a></li>
-                    
+
                 </ul>
             </nav>
 
