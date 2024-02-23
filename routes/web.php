@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RssManage;
+use App\Http\Controllers\preferenceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +28,15 @@ Route::get('/favorites', function () {
 });
 Route::get('/login', function(){
     return view('Authentication.authentication');
-});
+})->name('login');
 
 Route::get('/register', function(){
     return view('Authentication.authentication');
 });
+
+Route::get('/preferences', [CategoryController::class,'displayCategories'])->name('preferences.show');
+Route::post('/preferences', [preferenceController::class,'addPreference'])->name('preferences.add');
+
 
 Route::get('/collection', function () {
     return view('News.collectionPage');
