@@ -19,6 +19,11 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
+
+Route::get('/', function(){
+    return view('homePage');
+});
+
 /*
 |--------------------------------------------------------------------------
 |                       Categories & Collection
