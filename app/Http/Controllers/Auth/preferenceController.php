@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Preference;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class preferenceController extends Controller
 {
@@ -15,7 +16,7 @@ class preferenceController extends Controller
             'selected_tags' => 'required|array',
         ]);
 
-        $idUser = '1';
+        $idUser = Auth::user();
 
         foreach ($request->selected_tags as $categoryId) {
             Preference::create([
