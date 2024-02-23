@@ -16,10 +16,11 @@ class PostController extends Controller
         
         foreach ($rss->channel->item as $item) {
             $p = new Post();
-            
+        
             $p->title = $item->title;
             $p->description = $item->description;
             $p->category = $item->category;
+            $p->image = $item->enclosure['url'];
             
             $p->save();
         }
