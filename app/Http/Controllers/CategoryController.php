@@ -34,10 +34,4 @@ class CategoryController extends Controller
         return redirect()->route('dashboard.category');
     }
 
-
-    public function displayCategories()
-    {
-        $categories = Categories::orderBy('created_at', 'desc')->get();
-        return view('Authentication.authentication', ['categories' => $categories]);
-    }
 }

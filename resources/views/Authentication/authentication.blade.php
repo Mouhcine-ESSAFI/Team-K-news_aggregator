@@ -2,13 +2,13 @@
 
 @section('content')
 
-    @if (Request::url() === 'http://localhost/register')
+    @if (Request::url() === 'http://127.0.0.1:8000/register')
         @section('title')
             register
         @endsection
 
         <x-authentication.register />
-    @elseif (Request::url() === 'http://localhost/login')
+    @elseif (Request::url() === 'http://127.0.0.1:8000/login')
 
         @section('title')
             login
