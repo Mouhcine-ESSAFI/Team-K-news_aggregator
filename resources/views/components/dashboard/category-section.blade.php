@@ -13,7 +13,7 @@
                 <h2 class="text-3xl font-bold">All Categories</h2>
                 <p class="font-serif text-sm dark:text-gray-400">Here you can add and see all categories.</p>
             </div>
-            <x-cards.category-cards/>
+            <x-cards.category-cards :categories="$categories"/>
         </div>
     </section>
 </main>

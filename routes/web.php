@@ -19,13 +19,12 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-
 /*
 |--------------------------------------------------------------------------
 |                       Categories & Collection
 |--------------------------------------------------------------------------
 */
-Route::get('/', [CategoryController::class, 'index'])->name('home');
+Route::get('/category', [CategoryController::class, 'index'])->name('dashboard.category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('/collection', function () {
@@ -97,10 +96,6 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/Rss', function () {
-    return view('dashboard');
-});
-
-Route::get('/category', function (){
     return view('dashboard');
 });
 

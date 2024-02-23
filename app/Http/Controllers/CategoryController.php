@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Categories::all();
-        return view('admin.category', compact('categories'));
+        return view('dashboard', compact('categories'));
     }
 
     public function store(Request $request)
@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard.category');
     }
 
     public function destroy($id)
@@ -31,8 +31,9 @@ class CategoryController extends Controller
         $category = Categories::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard.category');
     }
+
 
     public function displayCategories()
     {
