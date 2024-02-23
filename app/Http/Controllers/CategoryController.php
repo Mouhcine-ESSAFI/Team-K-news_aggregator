@@ -35,9 +35,5 @@ class CategoryController extends Controller
     }
 
 
-    public function displayCategories()
-    {
-        $categories = Categories::orderBy('created_at', 'desc')->get();
-        return view('Authentication.authentication', ['categories' => $categories]);
-    }
+    
 }
