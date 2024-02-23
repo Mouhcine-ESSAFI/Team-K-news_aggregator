@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class RssManage extends Controller
 {
     /**
-     * 
+     * inserts a new rss to source table
      */
     public function newRss(Request $r){
         $source = new SourceRss();
+
         $source->category_id = 1;
         $source->rss_link = $r->link;
         $source->name = $r->name;
