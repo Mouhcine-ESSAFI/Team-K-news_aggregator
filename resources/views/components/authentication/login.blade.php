@@ -100,13 +100,14 @@
             </span>
             </div>
 
-            <form class="sb" action="https://formbold.com/s/unique_form_id" method="POST">
+            <form class="sb" action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="wb">
-                    <label class="rc kk wm vb" for="username">Username</label>
+                    <label class="rc kk wm vb" for="email">Email</label>
                     <input
                         type="text"
-                        name="username"
-                        id="username"
+                        name="email"
+                        id="email"
                         placeholder="example@gmail.com"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
                     />
@@ -123,7 +124,7 @@
                     />
                 </div>
 
-                <button class="vd rj ek rc rg gh lk ml il _l gi hi">
+                <button type="submit" class="vd rj ek rc rg gh lk ml il _l gi hi">
                     Sign In
                 </button>
 
