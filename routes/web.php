@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RssManage;
 use App\Http\Controllers\preferenceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -94,15 +96,23 @@ Route::get('/dashboard', function () {
 });
 
 
-
-
 Route::get('/Rss', function () {
     return view('dashboard');
 });
 
-Route::get('/category', function () {
+Route::get('/category', function (){
     return view('dashboard');
+});
 
-    Route::get('/trends', function () {
+
+Route::get('/trends', function () {
+    return view('News.tendancePage');
+});
+
+
+Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
+
+Route::get('/trends', function () {
         return view('News.tendancePage');
     });
+
