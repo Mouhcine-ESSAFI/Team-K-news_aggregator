@@ -101,8 +101,9 @@
                         Or, sign up with your email
                 </span>
             </div>
-
-            <form class="sb" action="https://formbold.com/s/unique_form_id" method="POST">
+{{--Form --}}
+            <form class="sb" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="wb">
                     <h1 class="font-semibold text-center dark:text-white">Select an Profile Image</h1>
                     <input class="login-input" name="picture" value="{{ old('picture') }}" type="file" accept="image/*" id="imageInput"
