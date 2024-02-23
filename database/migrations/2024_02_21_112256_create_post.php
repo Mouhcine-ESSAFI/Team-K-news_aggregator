@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('source', function (Blueprint $table) {
+        Schema::create('post', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('image');
             $table->bigInteger('category_id');
+            $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
         });
@@ -27,8 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('source', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('post');
     }
 };

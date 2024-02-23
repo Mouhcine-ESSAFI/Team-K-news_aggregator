@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect('/category');
+        return redirect()->route('dashboard.category');
     }
 
     public function destroy($id)
@@ -31,13 +31,7 @@ class CategoryController extends Controller
         $category = Categories::findOrFail($id);
         $category->delete();
 
-        return redirect('/category');
+        return redirect()->route('dashboard.category');
     }
 
-
-    public function displayCategories()
-    {
-        $categories = Categories::orderBy('created_at', 'desc')->get();
-        return view('Authentication.authentication', ['categories' => $categories]);
-    }
 }
