@@ -34,6 +34,7 @@ class CategoryController extends Controller
         return redirect()->route('home');
     }
 
+
     public function displayCategories()
     {
         $categories = Categories::orderBy('created_at', 'desc')->get();

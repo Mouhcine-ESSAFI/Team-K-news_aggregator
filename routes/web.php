@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\preferenceController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RssManage;
-use App\Http\Controllers\preferenceController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -18,6 +18,10 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function(){
+    return view('homePage');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +82,7 @@ Route::get('/favorites', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/preferences', [CategoryController::class,'displayCategories'])->name('preferences.show');
+Route::get('/preferences', [preferenceController::class,'displayCategories'])->name('preferences.show');
 Route::post('/preferences', [preferenceController::class,'addPreference'])->name('preferences.add');
 
 
