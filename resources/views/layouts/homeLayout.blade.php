@@ -82,6 +82,9 @@
 <!-- Inclure la bibliothèque Slick Carousel -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
+<script defer src="./resources/js/image-register.js"></script>
+
+
 <!-- Script d'initialisation du carrousel -->
 <script type="text/javascript">
     $(document).ready(function () {

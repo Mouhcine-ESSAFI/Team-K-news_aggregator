@@ -24,13 +24,14 @@ class LoginController extends Controller
             return response(['errors'=>$validator->errors()->all()], 422);
         }
         $user = User::where('email', $request->email)->first();
+
         if ($user) {
-//            dd(Hash::check($request->password, $user->password));
+
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 $response = ['token' => $token];
                 //return response($response, 200);
-                return redirect('/')->with('success', 'Login successful!');
+                return redirect('/preferences')->with('success', 'Login successful!');
 
             } else {
                 $response = ["message" => "Password mismatch"];

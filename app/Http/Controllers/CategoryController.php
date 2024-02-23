@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect()->route('home');
+        return redirect('/category');
     }
 
     public function destroy($id)
@@ -39,4 +39,5 @@ class CategoryController extends Controller
         $categories = Categories::orderBy('created_at', 'desc')->get();
         return view('Authentication.authentication', ['categories' => $categories]);
     }
+    
 }

@@ -2,26 +2,15 @@
 
 @section('content')
 
-    @if (Request::url() === 'http://localhost/register')
-        @section('title')
-            register
-        @endsection
-
+    @if (url()->current() === url('register'))
+        @section('title', 'register')
         <x-authentication.register />
-    @elseif (Request::url() === 'http://localhost/login')
-
-        @section('title')
-            login
-        @endsection
-
+    @elseif (url()->current() === url('login'))
+        @section('title', 'login')
         <x-authentication.login />
     @else
+        @section('title', 'preferences')
+            <x-authentication.preferences :categories="$categories"/>
+            @endif
 
-        @section('title')
-            preferences
         @endsection
-
-        <x-authentication.preferences :categories="$categories"/>
-    @endif
-
-@endsection
