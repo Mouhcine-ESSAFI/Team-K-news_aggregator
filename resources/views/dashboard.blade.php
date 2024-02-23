@@ -13,7 +13,7 @@
         @section('title')
             Static
         @endsection
-        <x-dashboard.category-section/>
+        <x-dashboard.category-section :categories="$categories"/>
     @else
         @section('title')
             Rss
