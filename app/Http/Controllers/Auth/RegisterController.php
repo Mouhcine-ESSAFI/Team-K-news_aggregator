@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -62,5 +63,26 @@ class RegisterController extends Controller
         $user->access_token = $data['access_token'];
 
         return redirect('/login')->with('success', 'Registration successful! Please log in.');
+    }
+
+    public function showUserStatistics()
+    {
+        $userStatistics = User::select(
+            DB::raw('DATE(created_at) as date'),
+            DB::raw('COUNT(*) as user_count')
+        )
+        ->groupBy('date')
+        ->get();
+
+        // dd($userStatistics);
+
+        // Nombre total d'abonnés
+        $totalUsers = User::count();
+
+        // dd($totalUsers);
+        return view('dashboard', [
+            'userStatistics' => $userStatistics,
+            'totalUsers' => $totalUsers
+        ]);
     }
 }
