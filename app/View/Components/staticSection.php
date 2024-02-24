@@ -11,9 +11,13 @@ class staticSection extends Component
      *
      * @return void
      */
+    public $userStatistics;
+    public $totalUsers;
+
     public function __construct()
     {
-        //
+        $this->userStatistics;
+        $this->totalUsers;
     }
 
     /**
