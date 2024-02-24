@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\preferenceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Post;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
 
@@ -111,7 +113,9 @@ Route::get('/trends', function () {
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 
+// posts
+Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
+
 Route::get('/trends', function () {
         return view('News.tendancePage');
-    });
-
+});
