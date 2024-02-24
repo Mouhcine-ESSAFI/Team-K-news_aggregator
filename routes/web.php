@@ -94,9 +94,11 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 |--------------------------------------------------------------------------
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+
+Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name('statistiques');
 
 
 Route::get('/Rss', function () {
