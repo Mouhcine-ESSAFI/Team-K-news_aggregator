@@ -79,6 +79,8 @@ class RegisterController extends Controller
         // Nombre total d'abonnés
         $totalUsers = User::count();
 
+
+
         // dd($totalUsers);
         return view('dashboard', [
             'userStatistics' => $userStatistics,
