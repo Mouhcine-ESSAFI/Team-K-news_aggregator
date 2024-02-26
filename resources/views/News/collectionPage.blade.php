@@ -11,14 +11,6 @@
 <main>
     <!-- ===== Hero Start ===== -->
     <section class=" pt-32 i">
-        <!-- ===== Hero Start ===== -->
-            <div
-                x-data="{ sectionTitle: `Collection`}">
-                <div class="animate_top bb ze rj ki xn vq">
-                    <h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
-                    </h2>
-                </div>
-            </div>
         <div
             x-data="{ sectionTitle: `Category 1`}">
             <div class="pl-24">

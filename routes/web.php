@@ -33,10 +33,11 @@ Route::get('/', function(){
 Route::get('/category', [CategoryController::class, 'index'])->name('dashboard.category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::get('/collection', function () {
-    return view('News.collectionPage');
-});
+//Route::get('/collection', function () {
+//    return view('News.collectionPage');
+//});
 
+Route::get('/collection', [PostController::class, "showPosts"]);
 
 
 /*
@@ -106,9 +107,7 @@ Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name
 
 
 
-Route::get('/trends', function () {
-    return view('News.tendancePage');
-});
+Route::get('/trends', [PostController::class,'allPosts']);
 
 
 // rss
@@ -120,6 +119,7 @@ Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
+
 
 Route::get('/trends', function () {
 
