@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class RssManage extends Controller
 {
+    /***
+     * show all categories in the form
+     * show all rss links
+     */
+    public function index()
+    {
+        $categories = Categories::all();
+        $links = SourceRss::all();
+
+        return view('dashboard', compact('categories', 'links'));
+    }
+
     /**
      * inserts a new rss to source table
      */
