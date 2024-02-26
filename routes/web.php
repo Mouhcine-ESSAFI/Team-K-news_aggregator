@@ -96,24 +96,31 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 |--------------------------------------------------------------------------
 */
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//});
+
+
 
 Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name('statistiques');
+
+
 
 Route::get('/trends', function () {
     return view('News.tendancePage');
 });
 
-// Rss
-Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
+
+// rss
+Route::get('/Rss', [RssManage::class, "index"])->name("Rss");
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
+
+Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
 Route::get('/trends', function () {
-        return view('News.tendancePage');
+    return view('News.tendancePage');
 });

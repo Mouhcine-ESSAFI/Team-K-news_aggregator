@@ -7,9 +7,10 @@
     </div>
     <div class="w-full px-6 py-6 mx-auto">
         <div class="flex  flex-col justify-between lg:flex-row">
-            <x-forms.rss-form :categories="$categories"/>
 
-            <x-tables.rss-table/>
+            <x-forms.rss-form :categories="$categories" :links="$links"/>
+
+            <x-tables.rss-table :links="$links"/>
         </div>
     </div>
 </main>

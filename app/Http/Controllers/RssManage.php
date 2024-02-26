@@ -11,12 +11,18 @@ class RssManage extends Controller
 
     /***
      * show all categories in the form
+     * show all rss links
+
      */
     public function index()
     {
         $categories = Categories::all();
-        return view('dashboard', compact('categories'));
+
+        $links = SourceRss::all();
+
+        return view('dashboard', compact('categories', 'links'));
     }
+
     /**
      * inserts a new rss to source table
      */
@@ -26,6 +32,17 @@ class RssManage extends Controller
         $source->rss_link = $r->link;
         $source->name = $r->name;
         $source->save();
+        return redirect('/Rss');
+    }
+
+    /**
+     * delete Rss link
+     */
+    public function destroyLink($id)
+    {
+        $link = SourceRss::findOrFail($id);
+        $link->delete();
+
         return redirect('/Rss');
     }
 }
