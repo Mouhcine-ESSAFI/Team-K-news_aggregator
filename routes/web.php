@@ -102,16 +102,12 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 
 Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name('statistiques');
 
-
-Route::get('/Rss', function () {
-    return view('dashboard');
-});
-
-
 Route::get('/trends', function () {
     return view('News.tendancePage');
 });
 
+// Rss
+Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 
