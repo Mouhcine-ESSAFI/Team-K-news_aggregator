@@ -106,9 +106,7 @@ Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name
 
 
 
-Route::get('/trends', function () {
-    return view('News.tendancePage');
-});
+Route::get('/trends', [PostController::class,'allPosts']);
 
 
 // rss
@@ -121,6 +119,3 @@ Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
-Route::get('/trends', function () {
-    return view('News.tendancePage');
-});
