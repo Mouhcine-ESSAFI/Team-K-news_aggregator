@@ -30,4 +30,15 @@ class RssManage extends Controller
         $source->name = $r->name;
         $source->save();
     }
+
+    /**
+     * delete Rss link
+     */
+    public function destroyLink($id)
+    {
+        $link = SourceRss::findOrFail($id);
+        $link->delete();
+
+        return redirect('/Rss');
+    }
 }
