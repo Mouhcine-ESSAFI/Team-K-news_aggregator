@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 
 class RssManage extends Controller
 {
+
     /***
      * show all categories in the form
      * show all rss links
+
      */
     public function index()
     {
         $categories = Categories::all();
+
         $links = SourceRss::all();
 
         return view('dashboard', compact('categories', 'links'));
@@ -25,11 +28,11 @@ class RssManage extends Controller
      */
     public function newRss(Request $r){
         $source = new SourceRss();
-
-        $source->category_id = 1;
+        $source->category_id = $r->category_id;
         $source->rss_link = $r->link;
         $source->name = $r->name;
         $source->save();
+        return redirect('/Rss');
     }
 
     /**

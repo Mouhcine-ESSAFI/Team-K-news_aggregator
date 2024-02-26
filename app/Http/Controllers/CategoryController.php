@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Categories::all();
-        return view('admin.category', compact('categories'));
+        return view('/dashboard', compact('categories'));
     }
 
     public function store(Request $request)
@@ -31,13 +31,9 @@ class CategoryController extends Controller
         $category = Categories::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('home');
+        return redirect('/category');
     }
 
-    public function displayCategories()
-    {
-        $categories = Categories::orderBy('created_at', 'desc')->get();
-        return view('Authentication.authentication', ['categories' => $categories]);
-    }
-    
+
+
 }

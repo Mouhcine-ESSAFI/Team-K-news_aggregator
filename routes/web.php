@@ -101,12 +101,15 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 //});
 
 
+
 Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name('statistiques');
+
 
 
 Route::get('/trends', function () {
     return view('News.tendancePage');
 });
+
 
 // rss
 Route::get('/Rss', [RssManage::class, "index"])->name("Rss");
