@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\SourceRss;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Source;
 
 class PostController extends Controller
 {
     public function insertPost(Request $r)
     {
-        $catRssLink = [
-        "economy" => "https://www.france24.com/fr/%C3%A9co-tech/rss",
-        "sport" => "https://www.france24.com/fr/sports/rss",
-        "culture" => "https://www.france24.com/fr/culture/rss"];
-
+        $catRssLink = new SourceRss();
+        $catRssLink->all();
         
         foreach($catRssLink as $category => $rss){
             $rss_feed_data = file_get_contents($rss);

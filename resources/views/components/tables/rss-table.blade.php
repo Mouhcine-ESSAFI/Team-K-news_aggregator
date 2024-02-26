@@ -14,7 +14,6 @@
                             <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                 Status
                             </th>
-
                         </tr>
                         </thead>
                         <tbody class="border-t">
