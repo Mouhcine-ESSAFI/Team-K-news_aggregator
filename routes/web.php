@@ -122,5 +122,11 @@ Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost"
 
 
 Route::get('/trends', function () {
-    return view('News.tendancePage');
+
+        return view('News.tendancePage');
+});
+
+Route::get('/content', function () {
+    return view('News.contentPage');
+
 });

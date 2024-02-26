@@ -1,0 +1,213 @@
+.beautiful-button {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+    /* Gradient background */
+    color: white;
+    /* White text color */
+    font-family: "Segoe UI", sans-serif;
+    /* Stylish and legible font */
+    font-weight: bold;
+    font-size: 18px;
+    /* Large font size */
+    border: none;
+    /* No border */
+    border-radius: 30px;
+    /* Rounded corners */
+    padding: 14px 28px;
+    /* Large padding */
+    cursor: pointer;
+    /* Cursor on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    animation: button-shimmer 2s infinite;
+    transition: all 1s ease-in-out;
+    /* Smooth transition */
+
+}
+
+/* Hover animation */
+.beautiful-button:hover {
+    background: linear-gradient(to bottom, #2c2f63, #5b67b7);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+/* Click animation */
+.beautiful-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer animation */
+@keyframes button-shimmer {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+/* Particle animation */
+@keyframes button-particles {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+
+/*scroll button*/
+
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button:hover {
+    width: 140px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: rgb(181, 160, 255);
+    align-items: center;
+}
+
+.button:hover .svgIcon {
+    /* width: 20px; */
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+}
+
+.button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Back to Top";
+    color: white;
+    /* transition-duration: .3s; */
+    font-size: 0px;
+}
+
+.button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    /* transform: translateY(-30px); */
+    transition-duration: 0.3s;
+}
+
+
+/*sign up button*/
+.SignUp-button {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(209,209,209,1) 0%, rgba(0,0,0,1) 100%, rgba(0,237,255,1) 100%);
+    /* Gradient background */
+    color: white;
+    /* White text color */
+    font-family: "Segoe UI", sans-serif;
+    /* Stylish and legible font */
+    font-weight: bold;
+    font-size: 18px;
+    /* Large font size */
+    border: none;
+    /* No border */
+    border-radius: 30px;
+    /* Rounded corners */
+    padding: 14px 28px;
+    /* Large padding */
+    cursor: pointer;
+    /* Cursor on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition */
+}
+
+/* Hover animation */
+.SignUp-button:hover {
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(209,209,209,1) 100%, rgba(0,237,255,1) 100%);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+/* Click animation */
+.SignUp-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer animation */
+@keyframes button-shimmer {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+/* Particle animation */
+@keyframes button-particles {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+/*post comments*/
+.post-comments {
+    border-radius: .25rem;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #fff;
+    -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    height: 40px;
+    font-size: 0.7rem;
+    line-height: 14px;
+    letter-spacing: 1.2px;
+    transition: .2s .1s;
+    background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+    border: 0 solid;
+    overflow: hidden;
+}
+
+.post-comments:hover {
+    cursor: pointer;
+    transition: all .3s ease-in;
+    padding-right: 30px;
+    padding-left: 30px;
+}

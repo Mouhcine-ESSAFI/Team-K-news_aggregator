@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -8,6 +7,7 @@
     <title>Aggregator | @yield('title')</title>
     <link rel="icon" href="favicon.ico">
     <link href="./resources/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/button.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
 
     <!-- Inclure la bibliothèque Slick Carousel -->
