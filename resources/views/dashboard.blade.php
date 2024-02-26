@@ -16,7 +16,7 @@
         @section('title')
             Rss
         @endsection
-        <x-dashboard.rss-section/>
+        <x-dashboard.rss-section :categories="$categories" :links="$links"/>
 
         <x-dashboard.rss-section :categories="$categories" :links="$links"/>
     @endif
