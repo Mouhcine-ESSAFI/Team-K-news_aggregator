@@ -29,8 +29,12 @@ class PostController extends Controller
                 $p->save();
             }
         }
-
-
-
     }
+
+    public function allPosts()
+    {
+        $Posts = Post::all();
+        return view('News.tendancePage', compact('Posts'));
+    }
+
 }
