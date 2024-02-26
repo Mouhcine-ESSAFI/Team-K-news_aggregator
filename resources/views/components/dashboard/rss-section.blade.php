@@ -9,7 +9,7 @@
         <div class="flex  flex-col justify-between lg:flex-row">
             <x-forms.rss-form/>
 
-            <x-tables.rss-table/>
+            <x-tables.rss-table :links="$links"/>
         </div>
     </div>
 </main>
