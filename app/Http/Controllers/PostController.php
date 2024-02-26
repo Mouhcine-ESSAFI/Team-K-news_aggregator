@@ -26,7 +26,6 @@ class PostController extends Controller
                 $p->description = $item->description;
                 $p->category = $category;
                 $p->image = $item->enclosure['url'];
-                
                 $p->save();
             }
         }

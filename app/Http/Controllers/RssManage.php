@@ -22,7 +22,6 @@ class RssManage extends Controller
      */
     public function newRss(Request $r){
         $source = new SourceRss();
-
         $source->category_id = $r->category_id;
         $source->rss_link = $r->link;
         $source->name = $r->name;
