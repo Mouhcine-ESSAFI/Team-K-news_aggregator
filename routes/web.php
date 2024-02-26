@@ -107,9 +107,7 @@ Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name
 
 
 
-Route::get('/trends', function () {
-    return view('News.tendancePage');
-});
+Route::get('/trends', [PostController::class,'allPosts']);
 
 
 // rss

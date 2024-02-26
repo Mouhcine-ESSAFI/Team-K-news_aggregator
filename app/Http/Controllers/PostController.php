@@ -46,4 +46,11 @@ class PostController extends Controller
             }
         }
     }
+
+    public function allPosts()
+    {
+        $Posts = Post::all();
+        return view('News.tendancePage', compact('Posts'));
+    }
+
 }
