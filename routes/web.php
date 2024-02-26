@@ -33,11 +33,10 @@ Route::get('/', function(){
 Route::get('/category', [CategoryController::class, 'index'])->name('dashboard.category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-//Route::get('/collection', function () {
-//    return view('News.collectionPage');
-//});
+Route::get('/collection', function () {
+    return view('News.collectionPage');
+});
 
-Route::get('/collection', [PostController::class, "showPosts"]);
 
 
 /*
@@ -50,6 +49,9 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+//Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 /*
@@ -85,10 +87,27 @@ Route::get('/favorites', function () {
 |--------------------------------------------------------------------------
 */
 
+//Route::middleware(['checkRole:user'])->group(function () {
+//    Route::get('/preferences', [preferenceController::class, 'displayCategories'])->name('preferences.show');
+//    // Add other routes for regular users here
+//});
+
 Route::get('/preferences', [preferenceController::class,'displayCategories'])->name('preferences.show');
 Route::post('/preferences', [preferenceController::class,'addPreference'])->name('preferences.add');
 
 
+
+//Route::middleware(['checkRole:user'])->group(function () {
+//    Route::get('/preferences', [preferenceController::class, 'displayCategories'])->name('preferences.show');
+//    // Add other routes for regular users here
+//});
+
+Route::middleware(['checkRole:admin'])->group(function () {
+    Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
+    Route::get('/Rss', function () {
+        return view('dashboard');
+    });
+});
 
 
 /*
@@ -96,37 +115,20 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 |                       Admin Dashboard
 |--------------------------------------------------------------------------
 */
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
+//Route::middleware(['checkRole:admin'])->group(function () {
+//    Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
+//    Route::get('/Rss', function () {
+//        return view('dashboard');
+//    });
 //});
-
-
-
-Route::get('/dashboard', [RegisterController::class,'showUserStatistics'])->name('statistiques');
-
-
-
-Route::get('/trends', [PostController::class,'allPosts']);
-
-
-// rss
-Route::get('/Rss', [RssManage::class, "index"])->name("Rss");
+// Rss
+Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
-
-Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
-
 Route::get('/trends', function () {
-
         return view('News.tendancePage');
-});
-
-Route::get('/content', function () {
-    return view('News.contentPage');
-
 });
