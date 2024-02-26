@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\SourceRss;
 use Illuminate\Http\Request;
 
