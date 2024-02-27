@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\SourceRss;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class RssManage extends Controller
 {
@@ -42,7 +43,6 @@ class RssManage extends Controller
     {
         $link = SourceRss::findOrFail($id);
         $link->delete();
-
         return redirect('/Rss');
     }
 }
