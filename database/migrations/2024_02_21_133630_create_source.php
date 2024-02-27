@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('source', function (Blueprint $table) {
             $table->id();
-            $table->string('rss_link');
+            $table->string('rss_link')->unique();
             $table->string('name');
             $table->timestamps();
         });
