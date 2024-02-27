@@ -10,6 +10,7 @@ use App\Models\SourceRss;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RssManage extends Controller
 {
@@ -58,6 +59,7 @@ class RssManage extends Controller
             foreach ($rss->channel->item as $item) {
                 $p = new Post();
                 $p->title = $item->title;
+                $p->slug = Str::slug($item->title);
                 $p->description = $item->description;
                 $p->category_id = $category;
                 $p->image = $item->enclosure['url'];
