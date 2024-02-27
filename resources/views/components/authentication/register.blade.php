@@ -106,7 +106,7 @@
                 @csrf
                 <div class="wb">
                     <h1 class="font-semibold text-center dark:text-white">Select an Profile Image</h1>
-                    <input class="login-input" name="picture" value="{{ old('picture') }}" type="file" accept="image/*" id="imageInput"
+                    <input class="login-input" name="files[]" value="{{ old('picture') }}" type="file" accept="image/*" id="imageInput"
                            style="display: none">
                     <!-- Circular image container -->
                     <label for="imageInput" class="relative mt-2 mr-48 mb-10 top-2 left-20 cursor-pointer ml-10 flex justify-center">
