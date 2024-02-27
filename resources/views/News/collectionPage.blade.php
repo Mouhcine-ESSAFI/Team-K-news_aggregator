@@ -63,10 +63,10 @@
 
                                         <div
                                             class="flex space-x-2 text-sm font-medium justify-start mt-5 justify-center ">
-                                            <button
-                                                class="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2 md:mb-0 bg-blue-500 px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full hover:bg-blue-600 ">
+                                            <a href="{{ route('show.content',$post->id) }}"
+                                               class="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2 md:mb-0 bg-blue-500 px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full hover:bg-blue-600 ">
                                                 <span>View More</span>
-                                            </button>
+                                            </a>
 
                                         </div>
                                     </div>
