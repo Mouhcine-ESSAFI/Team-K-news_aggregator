@@ -23,4 +23,8 @@ class Post extends Model
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
+    }
 }

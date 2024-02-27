@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Aggregator | content</title>
     <link rel="icon" href="favicon.ico">
-    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="{{ asset('resources/css/style.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/resources/css/button.css">
 </head>
@@ -27,30 +27,19 @@
             <div class="tc sf yo zf kq">
                 <div class="ro">
                     <div class="animate_top rounded-md shadow-solid-13 bg-transparent p-7.5 md:p-10">
-                        <img src="/resources/images/blog-big.png" alt="Blog"/>
+                        <img src="{{ $data[1]->image }}" alt="Blog"/>
 
-                        <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb gb">Kobe Steel plant that supplied</h2>
+                        <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb gb">{{ $data[1]->title }}</h2>
 
                         <ul class="tc uf cg 2xl:ud-gap-15 fb">
                             <li><span class="rc kk wm">Author: </span> Devid Cleriya</li>
-                            <li><span class="rc kk wm">Published On: </span> April 16, 2025</li>
-                            <li><span class="rc kk wm">Category: </span> Events</li>
+                            <li><span class="rc kk wm">Published On: </span>{{ $data[1]->created_at->format('d M Y') }}
+                            </li>
+                            <li><span class="rc kk wm">Category: </span>{{ $data[1]->category->name }}</li>
                         </ul>
 
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio
-                            lorem. In a efficitur leo. Ut venenatis rhoncus quam sed condimentum. Curabitur vel turpis
-                            in dolor volutpat imperdiet in ut mi. Integer non volutpat nulla. Nunc elementum elit
-                            viverra, tempus quam non, interdum ipsum.
-                        </p>
-
                         <p class="ob">
-                            Aenean augue ex, condimentum vel metus vitae, aliquam porta elit. Quisque non metus ac orci
-                            mollis posuere. Mauris vel ipsum a diam interdum ultricies sed vitae neque. Nulla
-                            porttitor quam vitae pulvinar placerat. Nulla fringilla elit sit amet justo feugiat sodales.
-                            Morbi eleifend, enim non eleifend laoreet, odio libero lobortis lectus, non porttitor sem
-                            urna sit amet metus. In sollicitudin quam est, pellentesque consectetur felis fermentum
-                            vitae.
+                            {{ $data[1]->description }}
                         </p>
                         <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb qb">The Comments</h2>
                         <section class="bg-transparent py-8 lg:py-16 antialiased">
@@ -67,7 +56,7 @@
                                                   placeholder="Write a comment..." required></textarea>
                                     </div>
                                     <button type="submit" class="post-comments">
-                                       post comment
+                                        post comment
                                     </button>
                                 </form>
                                 <article class="p-6 text-base bg-white  rounded-lg dark:bg-gray-900">
@@ -232,47 +221,28 @@
                         <h4 class="tj kk wm qb">Categories</h4>
 
                         <ul>
-                            <li class="ql vb du-ease-in-out il xl">
-                                <a href="#">Blog</a>
-                            </li>
-                            <li class="ql vb du-ease-in-out il xl">
-                                <a href="#">Events</a>
-                            </li>
-                            <li class="ql vb du-ease-in-out il xl">
-                                <a href="#">Grids</a>
-                            </li>
-                            <li class="ql vb du-ease-in-out il xl">
-                                <a href="#">News</a>
-                            </li>
-                            <li class="ql vb du-ease-in-out il xl">
-                                <a href="#">Rounded</a>
-                            </li>
+                            @foreach($data[0] as $category)
+                                <li class="ql vb du-ease-in-out il xl">
+                                    <a>{{ $category->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="animate_top">
                         <h4 class="tj kk wm qb">Related Posts</h4>
 
-                        <div>
-                            <div class="tc fg 2xl:ud-gap-6 qb">
-                                <img src="/resources/images/blog-small-01.png" alt="Blog"/>
-                                <h5 class="wj kk wm xl bn ml il">
-                                    <a href="#">Free advertising for your online business</a>
-                                </h5>
+                        @foreach($data[2] as $lastPosts)
+                            <div>
+                                <div class="tc mt-2 fg 2xl:ud-gap-6">
+                                    <img src="{{ $lastPosts->image }}" class="w-20 h-10" alt="Blog"/>
+                                    <h5 class="font-bold">
+                                        <a href="{{ route('show.content', ['id' => $lastPosts->id]) }}"> {{ substr($lastPosts->title, 0,  45) }}
+                                        </a>
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="tc fg 2xl:ud-gap-6 qb">
-                                <img src="/resources/images/blog-small-02.png" alt="Blog"/>
-                                <h5 class="wj kk wm xl bn ml il">
-                                    <a href="#">9 simple ways to improve your design skills</a>
-                                </h5>
-                            </div>
-                            <div class="tc fg 2xl:ud-gap-6">
-                                <img src="/resources/images/blog-small-03.png" alt="Blog"/>
-                                <h5 class="wj kk wm xl bn ml il">
-                                    <a href="#">Tips to quickly improve your coding speed.</a>
-                                </h5>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
