@@ -13,7 +13,6 @@ class PostController extends Controller
     public function showPosts()
     {
         $categories = Categories::all();
-
         $postsByCategory = [];
 
         foreach ($categories as $category) {
