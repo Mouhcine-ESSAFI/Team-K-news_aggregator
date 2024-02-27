@@ -9,6 +9,7 @@ use App\Models\Preference;
 use App\Models\SourceRss;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class RssManage extends Controller
@@ -89,7 +90,6 @@ class RssManage extends Controller
     {
         $link = SourceRss::findOrFail($id);
         $link->delete();
-
         return redirect('/Rss');
     }
 }

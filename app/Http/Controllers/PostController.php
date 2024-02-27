@@ -11,21 +11,58 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use SebastianBergmann\CodeCoverage\Report\Xml\Source;
+use Illuminate\Support\Facades\Cache;
+
 
 class PostController extends Controller
 {
-    public function showPosts()
+    /**
+     * this function retrieves categories and posts from cache if they are not in the cache or the cache is expired it retrieves them from the database and caches them
+     * 
+     */
+    public function showPosts(){
+    $categories = Cache::remember('categories', 60, function () {
+        return Categories::all();
+    });
+
+    $postsByCategory = [];
+
+    foreach ($categories as $category) {
+        $posts = Cache::remember('posts_' . $category->id, 60, function () use ($category) {
+            return Post::where('category_id', $category->id)->limit(6)->get();
+        });
+
+        $postsByCategory[$category->name] = $posts;
+    }
+
+    return view('News.collectionPage', compact('postsByCategory', 'categories'));
+}
+
+    public function insertPost(Request $r)
     {
-        $categories = Categories::all();
-        $postsByCategory = [];
+        $rssToInsert = new SourceRss();
+        $catRssLink = $rssToInsert->all();
 
-        foreach ($categories as $category) {
-            $posts = Post::where('category_id', $category->id)->limit(6)->get();
 
-            $postsByCategory[$category->name] = $posts;
+        foreach($catRssLink as $rss){
+            $category = $rss->category_id;
+            $rss_feed_data = file_get_contents($rss->rss_link);
+            $rss = simplexml_load_string($rss_feed_data);
+
+            foreach ($rss->channel->item as $item) {
+                $p = new Post();
+                $p->title = $item->title;
+                $p->description = $item->description;
+                $p->category_id = $category;
+                $p->image = $item->enclosure['url'];
+                $p->save();
+            }
         }
-
-        return view('News.collectionPage', compact('postsByCategory', 'categories'));
+        // Clear cache related to posts or categories after insertion
+    Cache::forget('categories');
+    foreach ($catRssLink as $rss) {
+        Cache::forget('posts_' . $rss->category_id);
+    }
     }
 
 

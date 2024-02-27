@@ -106,12 +106,12 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 //    // Add other routes for regular users here
 //});
 
-Route::middleware(['checkRole:admin'])->group(function () {
+// Route::middleware(['checkRole:admin'])->group(function () {
     Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
     Route::get('/Rss', function () {
         return view('dashboard');
     });
-});
+// });
 
 
 /*
