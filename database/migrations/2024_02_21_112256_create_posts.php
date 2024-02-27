@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->integer('trending_score')->default(0);
             $table->text('description');
             $table->text('image');
             $table->bigInteger('category_id');
