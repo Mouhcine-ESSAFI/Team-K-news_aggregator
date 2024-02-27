@@ -20,19 +20,19 @@ class profilController extends Controller
         ];
 
         $preferences = Preference::where('user_id', $idUser)->get();
-        
+
         $categories = [];
-        
+
         foreach ($preferences as $preference) {
             $categoryId = $preference->category_id;
-        
+
             $category = Categories::find($categoryId);
-        
+
             if ($category) {
                 $categories[] = $category;
             }
         }
-        
+
         return view('Authentication.authentication', compact('categories','userInfos'));
     }
 
