@@ -131,6 +131,5 @@ Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
-Route::get('/trends', function () {
-        return view('News.tendancePage');
-});
+
+Route::get('/trends', [PostController::class,'allPosts']);
