@@ -8,18 +8,24 @@ use App\Models\Preference;
 use App\Models\Categories;
 
 
-class profilController extends Controller
+class ProfilController extends Controller
 {
     public function showProfil()
     {
-        $idUser = session()->get('user_id');
+        // Check if the user is authenticated
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
+
+        // Get user information from the authenticated user
+        $user = auth()->user();
 
         $userInfos = [
-            'name' => session()->get('user_name'),
-            'email' => session()->get('user_email')
+            'name' => $user->name,
+            'email' => $user->email
         ];
 
-        $preferences = Preference::where('user_id', $idUser)->get();
+        $preferences = Preference::where('user_id', $user->id)->get();
 
         $categories = [];
 
@@ -32,8 +38,10 @@ class profilController extends Controller
                 $categories[] = $category;
             }
         }
+//        dd($userInfos, $categories);
 
-        return view('Authentication.authentication', compact('categories','userInfos'));
+
+        return view('Authentication.authentication', compact('categories', 'userInfos'));
     }
 
 
