@@ -8,9 +8,13 @@
     @elseif (url()->current() === url('login'))
         @section('title', 'login')
         <x-authentication.login />
-    @else
+    @elseif (url()->current() === url('preferences'))
         @section('title', 'preferences')
-            <x-authentication.preferences :categories="$categories"/>
+        <x-authentication.preferences :categories="$categories"/>
+    @else
+        @section('title','profil')
+        <x-authentication.profil :categories="$categories" :userInfos="$userInfos" />
+
             @endif
 
         @endsection

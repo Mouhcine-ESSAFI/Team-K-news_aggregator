@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\preferenceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\profilController;
 use App\Http\Controllers\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
@@ -88,6 +89,7 @@ Route::get('/favorites', function () {
 Route::get('/preferences', [preferenceController::class,'displayCategories'])->name('preferences.show');
 Route::post('/preferences', [preferenceController::class,'addPreference'])->name('preferences.add');
 
+Route::get('/profil', [profilController::class,'showProfil'])->name('profil.show');
 
 
 
