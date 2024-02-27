@@ -1,11 +1,9 @@
 <main class="h-screen flex items-center">
     <div class="max-w-lg w-1/2 mx-auto my-10 bg-gray-300 rounded-lg shadow-md p-5">
-        @forelse ($userInfos as $userInfo)
             <img class="w-56 h-56 rounded-full mx-auto" src="https://picsum.photos/200" alt="Profile picture">
-            <h2 class="text-center text-2xl font-semibold mt-3">{{ $userInfo['name'] }}</h2>
-            <p class="text-center text-gray-600 mt-1">Software Engineer</p>
-        @endforelse
-
+            <h2 class="text-center text-blue-900 text-2xl font-semibold mt-3">{{ $userInfos['name'] }}</h2>
+            <p class="text-center text-gray-600 mt-1">{{ $userInfos['email'] }}</p>
+            
 
         <div class="mt-5">
             <h3 class="text-xl font-semibold">Préférences</h3>
