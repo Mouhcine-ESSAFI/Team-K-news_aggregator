@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\NewPostNotification;
+use App\Mail\NewNotification;
 use App\Models\Categories;
 use App\Models\Post;
+use App\Models\Preference;
 use App\Models\SourceRss;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,20 +48,6 @@ class PostController extends Controller
                 $p->image = $item->enclosure['url'];
                 $p->save();
             }
-            // Send email notification to users
-            $this->sendEmailNotificationToUsers($p);
-        }
-    }
-
-    /***
-     * envoyer un email apres l'insertion des postes
-     */
-    private function sendEmailNotificationToUsers(Post $post)
-    {
-        $users = User::all();
-
-        foreach ($users as $user) {
-            Mail::to($user->email)->send(new NewPostNotification($user, $post));
         }
     }
 
