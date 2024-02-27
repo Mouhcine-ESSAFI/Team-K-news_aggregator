@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(PassportServiceProvider::class);
+//        $this->app->register(PassportServiceProvider::class);
 
     }
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Passport::ignoreRoutes();
+//        Passport::ignoreRoutes();
 
     }
 }
