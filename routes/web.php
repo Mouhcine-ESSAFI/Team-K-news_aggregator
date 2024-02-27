@@ -123,10 +123,8 @@ Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
 
-Route::get('/trends', function () {
+Route::get('/trends', [PostController::class,'allPosts']);
 
-    return view('News.tendancePage');
-});
 
 Route::get('/content', function () {
     return view('News.contentPage');
