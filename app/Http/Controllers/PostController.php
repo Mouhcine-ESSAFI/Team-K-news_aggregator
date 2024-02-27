@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewNotification;
 use App\Models\Categories;
 use App\Models\Post;
+use App\Models\Preference;
 use App\Models\SourceRss;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use SebastianBergmann\CodeCoverage\Report\Xml\Source;
 use Illuminate\Support\Facades\Cache;
 
@@ -60,6 +64,8 @@ class PostController extends Controller
         Cache::forget('posts_' . $rss->category_id);
     }
     }
+
+
 
     public function allPosts()
     {
