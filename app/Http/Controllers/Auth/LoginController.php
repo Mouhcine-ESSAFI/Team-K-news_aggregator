@@ -36,7 +36,7 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 $request->session()->put('user_id', $user->id);
                 $request->session()->put('user_name', $user->name);
-                $request->session()->put('user_email', $user->email);                
+                $request->session()->put('user_email', $user->email);
                 //dd($request->session()->get('user_id'));
 
 
