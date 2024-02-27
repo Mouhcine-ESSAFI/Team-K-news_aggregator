@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\preferenceController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
@@ -33,9 +32,12 @@ Route::get('/', function(){
 Route::get('/category', [CategoryController::class, 'index'])->name('dashboard.category');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::get('/collection', function () {
-    return view('News.collectionPage');
-});
+
+//Route::get('/collection', function () {
+//    return view('News.collectionPage');
+//});
+
+Route::get('/collection', [PostController::class, "showPosts"]);
 
 
 
