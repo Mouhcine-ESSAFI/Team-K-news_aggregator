@@ -105,12 +105,12 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 //    // Add other routes for regular users here
 //});
 
-Route::middleware(['checkRole:admin'])->group(function () {
+// Route::middleware(['checkRole:admin'])->group(function () {
     Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
     Route::get('/Rss', function () {
         return view('dashboard');
     });
-});
+// });
 
 
 /*
@@ -129,6 +129,8 @@ Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 
+Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
+
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
 
@@ -141,6 +143,6 @@ Route::get('/trends', [PostController::class,'allPosts']);
 |                       Content page
 |--------------------------------------------------------------------------
 */
-Route::get('/posts/{id}/content', [ContentController::class, "show"])->name("show.content");
+Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
 
 
