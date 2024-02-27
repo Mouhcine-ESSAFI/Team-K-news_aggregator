@@ -35,13 +35,14 @@ class ContentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         $data = [
-            $categories = Categories::all(),
-            $posts = Post::find($id),
-            $lastPosts = Post::take(3)->get()
+            'categories' => Categories::all(),
+            'post' => Post::where('slug', $slug)->first(),
+            'lastPosts' => Post::latest()->take(3)->get()
         ];
+        // dd($data);        
         return view('News.contentPage', compact('data'));
     }
 
