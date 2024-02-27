@@ -37,10 +37,34 @@ class RssManage extends Controller
         $source->rss_link = $r->link;
         $source->name = $r->name;
         $source->save();
-        $post = 0;
+
+        $this->insertPost();
         $this->sendEmailNotificationToInterestedUsers($r->category_id);
 
-        return redirect('/Rss');
+        return back();
+    }
+
+    public function insertPost()
+    {
+        $rssToInsert = new SourceRss();
+        $catRssLink = $rssToInsert->all();
+
+
+        foreach($catRssLink as $rss){
+            $category = $rss->category_id;
+            $rss_feed_data = file_get_contents($rss->rss_link);
+            $rss = simplexml_load_string($rss_feed_data);
+
+            foreach ($rss->channel->item as $item) {
+                $p = new Post();
+                $p->title = $item->title;
+                $p->description = $item->description;
+                $p->category_id = $category;
+                $p->image = $item->enclosure['url'];
+                $p->save();
+            }
+        }
+        redirect('/Rss');
     }
 
     /***
