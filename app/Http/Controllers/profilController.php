@@ -15,8 +15,8 @@ class profilController extends Controller
         $idUser = session()->get('user_id');
 
         $userInfos = [
-            $username = session()->get('user_name'),
-            $email = session()->get('user_email')
+            'name' => session()->get('user_name'),
+            'email' => session()->get('user_email')
         ];
 
         $preferences = Preference::where('user_id', $idUser)->get();
