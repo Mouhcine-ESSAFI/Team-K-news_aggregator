@@ -1,14 +1,17 @@
 # Agrégateur d'Actualités
 
-Bienvenue dans l'Agrégateur d'Actualités, une plateforme puissante développée avec Laravel et PostgreSQL pour offrir une expérience d'actualités personnalisée.
+Bienvenue dans Base un Agrégateur d'Actualités, une plateforme puissante développée avec Laravel et PostgreSQL pour offrir une expérience d'actualités personnalisée.
 
 ---
 
 ## Table des Matières
 
 1. [Architecture](#architecture)
-2. [Fonctionnalités](#fonctionnalités)
-3. [Installation](#installation)
+2. [UML](#uml)
+    1. [Diagramme de Classe](#diagramme-de-classe)
+    2. [Diagramme de Cas d'Utilisation](#diagramme-de-cas-dutilisation)
+3. [Fonctionnalités](#fonctionnalités)
+4. [Installation](#installation)
 
 ---
 
@@ -21,37 +24,49 @@ L'Agrégateur d'Actualités est construit sur l'architecture moderne de Laravel,
 
 ---
 
-## 2. Fonctionnalités <a name="fonctionnalités"></a>
+## 2. UML <a name="uml"></a>
 
-### 2.1 Sources
+### 2.1 Diagramme de Classe <a name="diagramme-de-classe"></a>
+
+Ajoutez ici le diagramme de classe UML pour illustrer la structure des classes et leurs relations.
+
+### 2.2 Diagramme de Cas d'Utilisation <a name="diagramme-de-cas-dutilisation"></a>
+
+Ajoutez ici le diagramme de cas d'utilisation UML pour représenter les interactions entre les utilisateurs et le système.
+
+---
+
+## 3. Fonctionnalités <a name="fonctionnalités"></a>
+
+### 3.1 Sources
 - Ajout de source flux RSS ou Atom pour diversifier les informations.
 
-### 2.2 Catégories
+### 3.2 Catégories
 - Classification des actualités par catégories pour faciliter la navigation.
 
-### 2.3 Actualités Tendances
+### 3.3 Actualités Tendances
 - Mise en évidence des actualités populaires ou tendances pour une expérience dynamique.
 
-### 2.4 Préférences Utilisateur
+### 3.4 Préférences Utilisateur
 - Personnalisation des préférences pour recevoir des actualités spécifiques.
 
-### 2.5 Favoris
+### 3.5 Favoris
 - Ajout d'actualités aux favoris pour un accès rapide aux contenus préférés.
 
-### 2.6 Commentaires
+### 3.6 Commentaires
 - Possibilité de commenter sous chaque actualité pour favoriser l'interaction.
 
 ---
 
-## 3. Installation <a name="installation"></a>
+## 4. Installation <a name="installation"></a>
 
-### 3.1 Prérequis
+### 4.1 Prérequis
 
 Assurez-vous d'avoir les éléments suivants installés avant de commencer :
 - [Docker](https://www.docker.com/)
 - [Composer](https://getcomposer.org/)
 
-### 3.2 Instructions
+### 4.2 Instructions
 
 1. Clonez ce dépôt :
     ```bash
