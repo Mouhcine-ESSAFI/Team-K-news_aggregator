@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Categories;
+use App\Models\SourceRss;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 use Illuminate\Support\Facades\Validator;
@@ -86,14 +89,17 @@ class RegisterController extends Controller
         // dd($userStatistics);
 
         // Nombre total d'abonnés
-        $totalUsers = User::count();
-
-
+        $data = [
+            'totalUsers' => User::count(),
+            'totalPosts' => Post::count(),
+            'totalCategories' => Categories::count(),
+            'totalRss' => SourceRss::count(),
+        ];
 
         // dd($totalUsers);
         return view('dashboard', [
             'userStatistics' => $userStatistics,
-            'totalUsers' => $totalUsers
+            'data' => $data
         ]);
     }
 }
