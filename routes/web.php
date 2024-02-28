@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Auth\GoogleController;
 
 
 /*
@@ -57,7 +58,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 //Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+//////////////////////       Google           ///////////////////////////:
+Route::get('auth/google',[GoogleController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/callback',[GoogleController::class, 'callbackGoogle']);
 /*
 |--------------------------------------------------------------------------
 |                       Register

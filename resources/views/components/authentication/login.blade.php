@@ -19,10 +19,11 @@
 
                 <h3 class="hk yj kk wm ob mc">Sign in with Social Media</h3>
                 <ul class="tc wf xf mg ec">
+{{--                    Social Media--}}
                     <li>
                         <a
                             class="tc wf xf be dd di sg _g ch qm ml il bm rl/40 ym/40"
-                            href="#"
+                            href="{{route('google-auth')}}"
                         >
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_50_914)">
