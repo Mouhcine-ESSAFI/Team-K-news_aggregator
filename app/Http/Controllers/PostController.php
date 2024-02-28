@@ -26,8 +26,7 @@ class PostController extends Controller
     {
         $categories = Cache::remember('categories', 60, function () {
             return Categories::all();
-        });
-    
+        });    
         $postsByCategory = [];
     
         foreach ($categories as $category) {
@@ -44,41 +43,14 @@ class PostController extends Controller
     
         return view('News.collectionPage', compact('postsByCategory', 'categories', 'favoris'));
     }
-    
-
-    public function insertPost(Request $r)
-    {
-        $rssToInsert = new SourceRss();
-        $catRssLink = $rssToInsert->all();
-
-
-        foreach($catRssLink as $rss){
-            $category = $rss->category_id;
-            $rss_feed_data = file_get_contents($rss->rss_link);
-            $rss = simplexml_load_string($rss_feed_data);
-
-            foreach ($rss->channel->item as $item) {
-                $p = new Post();
-                $p->title = $item->title;
-                $p->description = $item->description;
-                $p->category_id = $category;
-                $p->image = $item->enclosure['url'];
-                $p->save();
-            }
-        }
-        // Clear cache related to posts or categories after insertion
-    Cache::forget('categories');
-    foreach ($catRssLink as $rss) {
-        Cache::forget('posts_' . $rss->category_id);
-    }
-    }
-
 
 
     public function allPosts()
     {
-        $Posts = Post::all();
+        $Posts = Cache::remember('all_posts', 60, function () {
+            return Post::all();
+        });
+
         return view('News.tendancePage', compact('Posts'));
     }
-
 }

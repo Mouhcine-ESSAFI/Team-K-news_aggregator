@@ -27,19 +27,19 @@
             <div class="tc sf yo zf kq">
                 <div class="ro">
                     <div class="animate_top rounded-md shadow-solid-13 bg-transparent p-7.5 md:p-10">
-                        <img src="{{ $data[1]->image }}" alt="Blog"/>
+                        <img src="{{ $data['post']->image }}" alt="Blog"/>
 
-                        <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb gb">{{ $data[1]->title }}</h2>
+                        <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb gb">{{ $data['post']->title }}</h2>
 
                         <ul class="tc uf cg 2xl:ud-gap-15 fb">
                             <li><span class="rc kk wm">Author: </span> Devid Cleriya</li>
-                            <li><span class="rc kk wm">Published On: </span>{{ $data[1]->created_at->format('d M Y') }}
+                            <li><span class="rc kk wm">Published On: </span>{{ $data['post']->created_at->format('d M Y') }}
                             </li>
-                            <li><span class="rc kk wm">Category: </span>{{ $data[1]->category->name }}</li>
+                            <li><span class="rc kk wm">Category: </span>{{ $data['post']->category->name }}</li>
                         </ul>
 
                         <p class="ob">
-                            {{ $data[1]->description }}
+                            {{ $data['post']->description }}
                         </p>
                         <h2 class="ek vj 2xl:ud-text-title-lg kk wm nb qb">The Comments</h2>
                         <section class="bg-transparent py-8 lg:py-16 antialiased">
@@ -221,7 +221,7 @@
                         <h4 class="tj kk wm qb">Categories</h4>
 
                         <ul>
-                            @foreach($data[0] as $category)
+                            @foreach($data['categories'] as $category)
                                 <li class="ql vb du-ease-in-out il xl">
                                     <a>{{ $category->name }}</a>
                                 </li>
@@ -232,12 +232,12 @@
                     <div class="animate_top">
                         <h4 class="tj kk wm qb">Related Posts</h4>
 
-                        @foreach($data[2] as $lastPosts)
+                        @foreach($data['lastPosts'] as $lastPosts)
                             <div>
                                 <div class="tc mt-2 fg 2xl:ud-gap-6">
                                     <img src="{{ $lastPosts->image }}" class="w-20 h-10" alt="Blog"/>
                                     <h5 class="font-bold">
-                                        <a href="{{ route('show.content', ['id' => $lastPosts->id]) }}"> {{ substr($lastPosts->title, 0,  45) }}
+                                        <a href="{{ route('show.content', ['slug' => $lastPosts->slug]) }}"> {{ substr($lastPosts->title, 0,  45) }}
                                         </a>
                                     </h5>
                                 </div>

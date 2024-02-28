@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Auth\GoogleController;
 
 
 /*
@@ -58,7 +59,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 //Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+//////////////////////       Google           ///////////////////////////:
+Route::get('auth/google',[GoogleController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/callback',[GoogleController::class, 'callbackGoogle']);
 /*
 |--------------------------------------------------------------------------
 |                       Register
@@ -135,10 +138,6 @@ Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 
-// posts
-Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
-
-
 Route::get('/trends', [PostController::class,'allPosts']);
 
 
@@ -147,7 +146,7 @@ Route::get('/trends', [PostController::class,'allPosts']);
 |                       Content page
 |--------------------------------------------------------------------------
 */
-Route::get('/posts/{id}/content', [ContentController::class, "show"])->name("show.content");
+Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
 
 Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
 
