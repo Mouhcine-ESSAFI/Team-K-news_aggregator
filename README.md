@@ -28,7 +28,7 @@ L'Agrégateur d'Actualités est construit sur l'architecture moderne de Laravel,
 
 ### 2.1 Diagramme de Classe <a name="diagramme-de-classe"></a>
 
-![Diagramme de Classe](docs/class diagram.pdf)
+![Diagramme de Classe](docs/class_diagram.pdf)
 
 ### 2.2 Diagramme de Cas d'Utilisation <a name="diagramme-de-cas-dutilisation"></a>
 
