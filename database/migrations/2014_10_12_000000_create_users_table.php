@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->bigInteger('id_picture')->nullable();
             $table->string('email')->unique();
+            $table->enum('role', ['user', 'admin', 'client'])->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('google_id')->nullable();
