@@ -8,6 +8,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
 
 
 /*
@@ -128,6 +129,8 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
+Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
+
 
 Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
@@ -145,4 +148,5 @@ Route::get('/trends', [PostController::class,'allPosts']);
 */
 Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
 
+Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
 
