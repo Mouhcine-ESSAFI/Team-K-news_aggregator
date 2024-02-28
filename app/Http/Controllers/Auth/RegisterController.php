@@ -87,11 +87,15 @@ class RegisterController extends Controller
         ->get();
 
         // dd($userStatistics);
+        $categories = Categories::all();
 
+        $links = SourceRss::all();
         // Nombre total d'abonnés
         $data = [
             'totalUsers' => User::count(),
             'totalPosts' => Post::count(),
+            'categories' => Categories::all(),
+            'links' => Categories::all(),
             'totalCategories' => Categories::count(),
             'totalRss' => SourceRss::count(),
         ];
