@@ -20,13 +20,15 @@ class favorisController extends Controller
         // dd($request->postId);
 
         $user = Auth::user();
+        $post = Post::find($request->postId);
+        $post->increment('trending_score');
 
         Favoris::create([
             'post_id' => $request->postId,
             'user_id' => $user->id,
         ]);
 
-        return redirect()->route('showPosts');
+        return redirect()->back();
     }
 
     public function removeToFavoris(Request $request)
@@ -38,6 +40,8 @@ class favorisController extends Controller
         ]);
 
         $user = Auth::user();
+        $post = Post::find($request->postId);
+        $post->decrement('trending_score');
 
         $postId = $request->postId;
 
@@ -47,6 +51,6 @@ class favorisController extends Controller
 
                 ->delete();
 
-        return redirect()->route('showPosts');
+        return redirect()->back();
     }
 }
