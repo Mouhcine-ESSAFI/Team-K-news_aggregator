@@ -135,10 +135,6 @@ Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 
-// posts
-Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
-
-
 Route::get('/trends', [PostController::class,'allPosts']);
 
 
@@ -147,7 +143,7 @@ Route::get('/trends', [PostController::class,'allPosts']);
 |                       Content page
 |--------------------------------------------------------------------------
 */
-Route::get('/posts/{id}/content', [ContentController::class, "show"])->name("show.content");
+Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
 
 Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
 

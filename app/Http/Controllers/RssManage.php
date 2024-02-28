@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RssManage extends Controller
 {
@@ -39,33 +40,31 @@ class RssManage extends Controller
         $source->name = $r->name;
         $source->save();
 
-        $this->insertPost();
+        $this->insertPost($r->link, $r->category_id);
         $this->sendEmailNotificationToInterestedUsers($r->category_id);
 
         return back();
     }
 
-    public function insertPost()
+
+    public function insertPost($link, $category_id)
     {
-        $rssToInsert = new SourceRss();
-        $catRssLink = $rssToInsert->all();
+        $rss_feed_data = file_get_contents($link);
+        $rss = simplexml_load_string($rss_feed_data);
 
-
-        foreach($catRssLink as $rss){
-            $category = $rss->category_id;
-            $rss_feed_data = file_get_contents($rss->rss_link);
-            $rss = simplexml_load_string($rss_feed_data);
-
-            foreach ($rss->channel->item as $item) {
-                $p = new Post();
-                $p->title = $item->title;
-                $p->description = $item->description;
-                $p->category_id = $category;
-                $p->image = $item->enclosure['url'];
-                $p->save();
-            }
+        foreach ($rss->channel->item as $item) {
+            $p = new Post();
+            $p->title = $item->title;
+            $p->slug = Str::slug($item->title);
+            $p->description = $item->description;
+            $p->category_id = $category_id; // Assign the provided category ID
+            $p->image = isset($item->enclosure['url']) ? (string)$item->enclosure['url'] : null; // Check if image URL is available
+            $p->save();
         }
-        redirect('/Rss');
+        // Clear cache related to posts or categories after insertion
+        Cache::forget('categories');
+            Cache::forget('posts_' . $category_id);
+        return redirect('/Rss');
     }
 
     /***
