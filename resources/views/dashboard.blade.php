@@ -5,7 +5,7 @@
         @section('title')
             Static
         @endsection
-        <x-dashboard.static-section :userStatistics="$userStatistics" :totalUsers="$totalUsers"/>
+        <x-dashboard.static-section :userStatistics="$userStatistics" :data="$data"/>
 
     @elseif(Request::url() === 'http://127.0.0.1:8000/category')
         @section('title')
