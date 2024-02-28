@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\preferenceController;
+use App\Http\Controllers\favorisController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
@@ -39,7 +40,7 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 //    return view('News.collectionPage');
 //});
 
-Route::get('/collection', [PostController::class, "showPosts"]);
+Route::get('/collection', [PostController::class, "showPosts"])->name('showPosts');
 
 
 
@@ -83,6 +84,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/favorites', function () {
     return view('News.favorites');
 });
+Route::post('/collection', [favorisController::class,'addToFavoris'])->name('addToFavoris');
+Route::delete('/collection', [favorisController::class,'removeToFavoris'])->name('removeToFavoris');
 
 
 /*
