@@ -8,6 +8,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
 
 
 /*
@@ -105,12 +106,12 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 //    // Add other routes for regular users here
 //});
 
-Route::middleware(['checkRole:admin'])->group(function () {
+// Route::middleware(['checkRole:admin'])->group(function () {
     Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
     Route::get('/Rss', function () {
         return view('dashboard');
     });
-});
+// });
 
 
 /*
@@ -128,6 +129,8 @@ Route::middleware(['checkRole:admin'])->group(function () {
 Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
+Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
+
 
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
@@ -143,4 +146,5 @@ Route::get('/trends', [PostController::class,'allPosts']);
 */
 Route::get('/posts/{id}/content', [ContentController::class, "show"])->name("show.content");
 
+Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
 

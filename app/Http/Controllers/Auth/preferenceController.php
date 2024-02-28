@@ -16,19 +16,18 @@ class preferenceController extends Controller
             'selected_tags' => 'required|array',
         ]);
 
-        //$idUser = Auth::user();
-        $idUser = $request->session()->get('user_id');
-        //dd($idUser);
+        $user = Auth::user();
 
         foreach ($request->selected_tags as $categoryId) {
             Preference::create([
                 'category_id' => $categoryId,
-                'user_id' => $idUser,
+                'user_id' => $user->id,
             ]);
         }
 
         return redirect()->route('preferences.show');
     }
+
 
     public function displayCategories()
     {

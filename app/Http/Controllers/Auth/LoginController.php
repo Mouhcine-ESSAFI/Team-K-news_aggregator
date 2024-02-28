@@ -1,7 +1,6 @@
 <?php
 
 
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -9,15 +8,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
-use Laravel\Passport\Client;
-use Laravel\Passport\Token;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        // Validate the request data
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|string|min:8',
@@ -27,45 +24,50 @@ class LoginController extends Controller
             return response(['errors' => $validator->errors()->all()], 422);
         }
 
-        $user = User::where('email', $request->email)->first();
+        // Attempt to authenticate the user
+        $credentials = ['email' => $request->email, 'password' => $request->password];
 
-        if ($user) {
-            if (Hash::check($request->password, $user->password)) {
-                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
-                $request->session()->regenerate();
-                $request->session()->put('user_id', $user->id);
-                $request->session()->put('user_name', $user->name);
-                $request->session()->put('user_email', $user->email);                
-                //dd($request->session()->get('user_id'));
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
+            // Create a new personal access token for the user
+            $token = $user->createToken('Laravel Password Grant Client')->accessToken;
 
-                // Check user role and redirect accordingly
-                if ($user->role === 'admin') {
-                    return redirect('/dashboard')->with('success', 'Login successful!');
-                } else {
-                    return redirect('/preferences')->with('success', 'Login successful!');
-                }
+            // Your session handling logic
+            $request->session()->regenerate();
+            $request->session()->put('user_id', $user->id);
+            $request->session()->put('user_name', $user->name);
+            $request->session()->put('user_email', $user->email);
+
+            // Check user role and redirect accordingly
+            if ($user->role === 'admin') {
+                return redirect('/dashboard')->with('success', 'Login successful!');
             } else {
-                $response = ["message" => "Password mismatch"];
-                return response($response, 422);
+                return redirect('/preferences')->with('success', 'Login successful!');
             }
         } else {
-            $response = ["message" => 'User does not exist'];
-            return redirect('/login')->with('error', 'Invalid credentials. Please try again.');
+            // Authentication failed
+            $response = ["message" => "Invalid credentials"];
+            return response($response, 422);
         }
     }
 
 
 
+
+
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        // Revoke the user's access tokens
+        $request->user()->tokens()->delete();
 
-        // Clear the user's session data
-        $request->session()->forget('user_id');
+        // Perform Laravel's built-in logout
+        Auth::logout();
 
-        // Redirect to the login page with a success message
+        // Clear the user data from the session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/login')->with('success', 'Logout successful!');
     }
 

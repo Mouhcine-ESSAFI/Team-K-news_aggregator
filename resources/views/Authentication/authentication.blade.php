@@ -11,7 +11,7 @@
     @elseif (url()->current() === url('preferences'))
         @section('title', 'preferences')
         <x-authentication.preferences :categories="$categories"/>
-    @else
+    @elseif (url()->current() === url('profil'))
         @section('title','profil')
         <x-authentication.profil :categories="$categories" :userInfos="$userInfos" />
 
