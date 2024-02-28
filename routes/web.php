@@ -132,12 +132,6 @@ Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
 Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
 
 
-Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
-
-// posts
-Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
-
-
 Route::get('/trends', [PostController::class,'allPosts']);
 
 
