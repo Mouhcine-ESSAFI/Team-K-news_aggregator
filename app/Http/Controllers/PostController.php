@@ -38,8 +38,11 @@ class PostController extends Controller
         }
     
         $user = Auth::user();
-    
-        $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+        $favoris="";
+        if($user)
+        {
+            $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+        }
     
         return view('News.collectionPage', compact('postsByCategory', 'categories', 'favoris'));
     }
