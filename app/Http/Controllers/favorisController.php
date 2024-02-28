@@ -16,8 +16,9 @@ class favorisController extends Controller
         $request->validate([
             'postId' => 'required',
         ]);
-
+        
         // dd($request->postId);
+
         $user = Auth::user();
 
         Favoris::create([
@@ -31,17 +32,21 @@ class favorisController extends Controller
     public function removeToFavoris(Request $request)
     {
         $request->validate([
+
             'postId' => 'required',
+
         ]);
-    
+
         $user = Auth::user();
+
         $postId = $request->postId;
-    
+
         Favoris::where('user_id', $user->id)
+
                 ->where('post_id', $postId)
+
                 ->delete();
-    
+
         return redirect()->route('showPosts');
     }
-
 }
