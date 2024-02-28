@@ -13,6 +13,6 @@ class Preference extends Model
         'category_id',
         'user_id',
     ];
-    protected $table = 'preference';
+    protected $table = 'preferences';
 
 }
