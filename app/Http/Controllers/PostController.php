@@ -42,10 +42,10 @@ class PostController extends Controller
 
     public function allPosts()
     {
-        $posts = Cache::remember('all_posts', 60, function () {
+        $Posts = Cache::remember('all_posts', 60, function () {
             return Post::all();
         });
 
-        return view('News.tendancePage', compact('posts'));
+        return view('News.tendancePage', compact('Posts'));
     }
 }
