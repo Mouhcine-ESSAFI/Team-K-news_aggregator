@@ -11,10 +11,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Today's Money</p>
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Posts</p>
                                     <h5 class="mb-0 font-bold">
-                                        $53,000
-                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+                                        {{ $data['totalPosts'] }}
+                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">post</span>
                                     </h5>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 <div>
                                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Users</p>
                                     <h5 class="mb-0 font-bold">
-                                        {{ $totalUsers }}
+                                        {{ $data['totalUsers'] }}
                                         <span class="leading-normal text-sm font-weight-bolder text-lime-500">Utilisateurs</span>
                                     </h5>
                                 </div>
@@ -59,10 +59,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">New Clients</p>
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total categories</p>
                                     <h5 class="mb-0 font-bold">
-                                        +3,462
-                                        <span class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>
+                                        {{ $data['totalCategories'] }}
+                                        <span class="leading-normal text-red-600 text-sm font-weight-bolder">categories</span>
                                     </h5>
                                 </div>
                             </div>
@@ -83,10 +83,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Sales</p>
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Sources</p>
                                     <h5 class="mb-0 font-bold">
-                                        $103,430
-                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>
+                                        {{ $data['totalRss'] }}
+                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">sources rss</span>
                                     </h5>
                                 </div>
                             </div>
