@@ -28,11 +28,11 @@ L'Agrégateur d'Actualités est construit sur l'architecture moderne de Laravel,
 
 ### 2.1 Diagramme de Classe <a name="diagramme-de-classe"></a>
 
-Ajoutez ici le diagramme de classe UML pour illustrer la structure des classes et leurs relations.
+![Diagramme de Classe](docs/class diagram.pdf)
 
 ### 2.2 Diagramme de Cas d'Utilisation <a name="diagramme-de-cas-dutilisation"></a>
 
-Ajoutez ici le diagramme de cas d'utilisation UML pour représenter les interactions entre les utilisateurs et le système.
+![Diagramme de Classe](docs/Use_case_diagram.pdf)
 
 ---
 
