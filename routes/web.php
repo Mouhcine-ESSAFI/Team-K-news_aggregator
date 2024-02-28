@@ -129,6 +129,8 @@ Route::post('/preferences', [preferenceController::class,'addPreference'])->name
 Route::get('/Rss', [RssManage::class, 'index'])->name('Rss');
 
 Route::post('/newRss', [RssManage::class, "newRss"])->name("newRss");
+Route::post('/deleteLink/{id}', [RssManage::class, "destroyLink"]);
+
 
 // posts
 Route::get('/newPost', [PostController::class, "insertPost"])->name("insertPost");
