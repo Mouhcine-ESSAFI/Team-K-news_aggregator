@@ -4,7 +4,7 @@
         <!-- row 1 -->
         {{-- mini cards --}}
         <div class="flex flex-wrap -mx-3">
-            <!-- card1 -->
+            <!-- count posts -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-4">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <!-- card2 -->
+            <!-- count users -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-4">
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- card3 -->
+            <!-- count categories -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-4">
@@ -62,7 +62,7 @@
                                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total categories</p>
                                     <h5 class="mb-0 font-bold">
                                         {{ $data['totalCategories'] }}
-                                        <span class="leading-normal text-red-600 text-sm font-weight-bolder">categories</span>
+                                        <span class="leading-normal text-lime-500 text-sm font-weight-bolder">categories</span>
                                     </h5>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <!-- card4 -->
+            <!-- count sources -->
             <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
                 <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="flex-auto p-4">
@@ -100,6 +100,7 @@
                 </div>
             </div>
         </div>
+
         {{-- end mini cards --}}
         <div class="flex flex-wrap mt-10 lg:flex-row justify-between">
             <div class="flex flex-wrap -mx-3">
@@ -108,51 +109,41 @@
                         class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto px-0 pt-0 pb-2">
                             <div class="p-0 overflow-x-auto">
-                                <table
-                                    class="items-center justify-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
+                                <table class="items-center justify-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
                                     <thead class="align-bottom">
-                                    <tr>
-                                        <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Link id
-                                        </th>
-                                        <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Link name
-                                        </th>
-                                    </tr>
+                                        <tr>
+                                            <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                Link id
+                                            </th>
+                                            <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                Link name
+                                            </th>
+                                        </tr>
                                     </thead>
                                     <tbody class="border-t">
-                                    @foreach($data['links'] as $link)
-                                        <tr>
-                                            <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                <div class="flex px-2">
-                                                    <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm leading-normal dark:text-white">{{$link->id}}</h6>
+                                        @foreach($data['categories'] as $category)
+                                            <tr>
+                                                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <div class="flex px-2">
+                                                        <div class="my-auto">
+                                                            <h6 class="mb-0 text-sm leading-normal dark:text-white">{{$category->id}}</h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                <p class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                                    {{$link->name}}</p>
-                                            </td>
-                                            <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                {{-- <form action="/deleteLink/{{$link->id}}" method="post">
-                                                    @csrf
-                                                    <button
-                                                        class="bg-transparent cursor-pointer flex flex-row font-medium text-red-500 px-2 py-1 mt-2 rounded-md transition duration-150"
-                                                        type="submit">
-                                                        <svg class="w-5 h-5 mx-1" fill="none" stroke="currentColor"
-                                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                        </svg>
-                                                        Delete
-                                                    </button>
-                                                </form> --}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                </td>
+                                                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <p class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                                        {{$category->name}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
+                                
+                                {{ $data['categories']->links() }} 
+                            
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -173,40 +164,33 @@
                                         <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Link name
                                         </th>
+                                        <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Link email
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody class="border-t">
-                                    @foreach($data['categories'] as $category)
+                                    @foreach($data['users'] as $user)
                                         <tr>
                                             <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2">
                                                     <div class="my-auto">
-                                                        <h6 class="mb-0 text-sm leading-normal dark:text-white">{{$category->id}}</h6>
+                                                        <h6 class="mb-0 text-sm leading-normal dark:text-white">{{$user->id}}</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <p class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                                    {{$category->name}}</p>
+                                                    {{$user->name}}</p>
                                             </td>
                                             <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                {{-- <form action="/deleteLink/{{$link->id}}" method="post">
-                                                    @csrf
-                                                    <button
-                                                        class="bg-transparent cursor-pointer flex flex-row font-medium text-red-500 px-2 py-1 mt-2 rounded-md transition duration-150"
-                                                        type="submit">
-                                                        <svg class="w-5 h-5 mx-1" fill="none" stroke="currentColor"
-                                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                        </svg>
-                                                        Delete
-                                                    </button>
-                                                </form> --}}
+                                                <p class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                                    {{$user->email}}</p>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </table>
+                                {{ $data['users']->links() }}
                             </div>
                         </div>
                     </div>
