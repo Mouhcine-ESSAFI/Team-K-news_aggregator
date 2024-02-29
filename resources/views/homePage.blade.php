@@ -832,16 +832,12 @@
                         <div class="yh">
                             <div class="tc uf wf ag jq">
                                 <div class="tc wf ag">
-                                    <img src="/resources/images/icon-man.svg" alt="User"/>
-                                    <p>Musharof Chy</p>
-                                </div>
-                                <div class="tc wf ag">
                                     <img src="/resources/images/icon-calender.svg" alt="Calender"/>
-                                    <p>25 Dec, 2025</p>
+                                    <p>{{ $post->created_at->format('d M Y') }}</p>
                                 </div>
                             </div>
                             <h4 class="ek tj ml il kk wm xl eq lb">
-                                <a href="blog-single.html">Free advertising for your online business</a>
+                                <a href="blog-single.html">{{$post->title}}</a>
                             </h4>
                         </div>
                     </div>
