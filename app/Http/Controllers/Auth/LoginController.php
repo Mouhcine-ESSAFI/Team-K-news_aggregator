@@ -46,9 +46,9 @@ class LoginController extends Controller
 
             // Check user role and redirect accordingly
             if ($user->role === 'admin') {
-                return redirect('/dashboard')->with('success', 'Login successful!');
+                return redirect()->intended('/dashboard')->with('success', 'Login successful!');
             } else {
-                return redirect('/preferences')->with('success', 'Login successful!');
+                return redirect()->intended('/preferences')->with('success', 'Login successful!');
             }
         } else {
             // Authentication failed

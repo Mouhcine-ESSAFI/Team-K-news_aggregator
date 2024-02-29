@@ -38,7 +38,7 @@ Tendance
                             <div class="relative h-62 w-full mb-3">
                                 <div class="absolute flex flex-col top-0 right-0 p-3">
                                     {{-- dislike --}}
-                                    @if ($favoris->contains($post->id))
+                                    @if ($favoris && $favoris->contains($post->id))
                                     <form action="{{ route('removeToFavoris') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
