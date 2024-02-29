@@ -6,6 +6,7 @@ use App\Http\Controllers\favorisController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,7 @@ use App\Http\Controllers\Auth\GoogleController;
 |
 */
 
-Route::get('/', function(){
-    return view('homePage');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 /*
 |--------------------------------------------------------------------------
@@ -150,3 +149,5 @@ Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("s
 
 Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
 
+Route::post('/ajaxupload', [ContentController::class, 'upload']);
+Route::get('/comments/{postId}', [ContentController::class, 'fetchComments']);
