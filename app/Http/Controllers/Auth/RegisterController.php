@@ -96,16 +96,16 @@ class RegisterController extends Controller
         $data = [
             'totalUsers' => User::count(),
             'totalPosts' => Post::count(),
-            'categories' => Categories::all(),
-            'links' => Categories::all(),
+            'categories' => Categories::paginate(4, ['*'], 'categories'),            
+            'users' => User::paginate(4, ['*'], 'users'),            
             'totalCategories' => Categories::count(),
             'totalRss' => SourceRss::count(),
         ];
-
-        // dd($totalUsers);
+        
         return view('dashboard', [
             'userStatistics' => $userStatistics,
             'data' => $data
         ]);
+        
     }
 }
