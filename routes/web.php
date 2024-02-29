@@ -84,9 +84,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 |--------------------------------------------------------------------------
 */
 
-Route::get('/favorites', function () {
-    return view('News.favorites');
-});
+Route::get('/favorites', [favorisController::class, 'showFavorites'])->name('favorites.show');
+
 Route::post('/collection', [favorisController::class,'addToFavoris'])->name('addToFavoris');
 Route::delete('/collection', [favorisController::class,'removeToFavoris'])->name('removeToFavoris');
 
