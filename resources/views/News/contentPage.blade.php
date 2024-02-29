@@ -50,14 +50,16 @@
                         <section class="bg-transparent py-8 lg:py-16 antialiased">
                             <div class="max-w-2xl px-4">
                                 <div class="flex justify-between items-center mb-6">
-                                    <h2 class="ek vj xl:ud-text-title-lg kk wm nb qb">Discussion (20)</h2>
+                                    <h2 id="count" class="ek vj xl:ud-text-title-lg kk wm nb qb"></h2>
                                 </div>
                                 <form class="mb-6" action="{{ url('ajaxupload') }}" method="POST" id="addpost">
                                     @csrf
+                                        <input type="hidden" name="postId" value="{{ $data['post']->id }}">
+                            @auth()
                                     <div
                                         class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+
                                         <label for="comment" class="sr-only">Your comment</label>
-                                        <input type="hidden" name="postId" value="{{ $data['post']->id }}">
                                         <textarea id="comment" rows="6" name="content"
                                                   class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                                                   placeholder="Write a comment..." required></textarea>
@@ -65,6 +67,8 @@
                                     <button type="submit" class="post-comments">
                                         post comment
                                     </button>
+                                @endauth
+
                                 </form>
                                 <div id="message" class="comments-container">
                                     <!-- Dynamic comments will be loaded and displayed here -->
@@ -394,7 +398,7 @@
     });
 
     fetchComments();
-
+    const count = document.getElementById('count');
     function fetchComments() {
         var postId = jQuery('input[name="postId"]').val();
         console.log(`/comments/${postId}`);
@@ -403,6 +407,7 @@
             type: 'get',
             success: function (comments) {
                 console.log(comments);
+                count.textContent = `Discussion (${comments.length})`;
 
                 var commentsHtml = '';
                 comments.forEach(function (comment) {
