@@ -15,6 +15,11 @@ class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
+    public function getProfilePictureAttribute()
+    {
+        return $this->getFirstMediaUrl('profile_images');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
