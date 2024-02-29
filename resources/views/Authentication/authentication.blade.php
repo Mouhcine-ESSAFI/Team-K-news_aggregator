@@ -13,7 +13,7 @@
         <x-authentication.preferences :categories="$categories"/>
     @elseif (url()->current() === url('profil'))
         @section('title','profil')
-        <x-authentication.profil :categories="$categories" :userInfos="$userInfos" />
+        <x-authentication.profil :categories="$categories" :user="$user" />
 
             @endif
 

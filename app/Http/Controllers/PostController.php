@@ -38,12 +38,36 @@ class PostController extends Controller
         }
     
         $user = Auth::user();
-    
-        $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+        $favoris="";
+        if($user)
+        {
+            $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+        }
     
         return view('News.collectionPage', compact('postsByCategory', 'categories', 'favoris'));
     }
 
+    public function showPostsTrends()
+    {
+        $categories = Cache::remember('categories', 60, function () {
+            return Categories::all();
+        });    
+        $poststrends = [];
+    
+        foreach ($categories as $category) {
+            $posts = Cache::remember('posts_' . $category->id, 60, function () use ($category) {
+                return Post::where('category_id', $category->id)->orderByDesc('trending_score')->limit(6)->get();
+            });
+    
+            $poststrends[$category->name] = $posts;
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    
+        $user = Auth::user();
+    
+        $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+    
+        return view('News.tendancePage', compact('poststrends', 'categories', 'favoris'));
+    }
 
     public function allPosts()
     {

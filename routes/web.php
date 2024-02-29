@@ -56,6 +56,13 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //dashboard
+
+Route::get('/favorites', [favorisController::class, 'showFavorites'])->name('favorites.show');
+
+Route::post('/collection', [favorisController::class,'addToFavoris'])->name('addToFavoris');
+Route::delete('/collection', [favorisController::class,'removeToFavoris'])->name('removeToFavoris');
+
+
     Route::get('/dashboard', [RegisterController::class, 'showUserStatistics'])->name('statistiques');
     Route::get('/Rss', function () {
         return view('dashboard');
@@ -78,6 +85,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     //preferences
     Route::get('/preferences', [preferenceController::class, 'displayCategories'])->name('preferences.show');
     Route::post('/preferences', [preferenceController::class, 'addPreference'])->name('preferences.add');
+
+    Route::get('/trends', [PostController::class,'showPostsTrends']);
 
     //favorites
     Route::get('/favorites', function () {

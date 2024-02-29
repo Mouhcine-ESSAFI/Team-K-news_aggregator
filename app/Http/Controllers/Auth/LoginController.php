@@ -20,8 +20,13 @@ class LoginController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
+//        if ($validator->fails()) {
+//            return response(['errors' => $validator->errors()->all()], 422);
+//        }
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+            return redirect('/login')
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Attempt to authenticate the user
