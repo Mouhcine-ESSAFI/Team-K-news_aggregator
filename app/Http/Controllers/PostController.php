@@ -64,19 +64,11 @@ class PostController extends Controller
 
         $user = Auth::user();
 
-        $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
-
+        $favoris="";
+        if($user) {
+            $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
+        }
         return view('News.tendancePage', compact('poststrends', 'categories', 'favoris'));
     }
-
-    public function allPosts()
-    {
-        $Posts = Cache::remember('all_posts', 60, function () {
-            return Post::all();
-        });
-
-        return view('News.tendancePage', compact('Posts'));
-    }
-
 
 }
