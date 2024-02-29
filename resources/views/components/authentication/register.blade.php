@@ -105,7 +105,7 @@
             <form class="sb" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="wb">
-                    <h1 class="font-semibold text-center dark:text-white">Select an Profile Image</h1>
+                    <h1 class="font-semibold text-center dark:text-white">Select a Profile Image</h1>
                     <input class="login-input" name="files[]" value="{{ old('picture') }}" type="file" accept="image/*" id="imageInput"
                            style="display: none">
                     <!-- Circular image container -->
@@ -122,7 +122,14 @@
                         id="fullname"
                         placeholder="Devid Wonder"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+                        value="{{ old('fullname') }}" {{-- Preserve the old input value --}}
                     />
+                    @error('fullname')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                    @error('files.*')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="wb">
@@ -133,7 +140,11 @@
                         id="email"
                         placeholder="example@gmail.com"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+                        value="{{ old('email') }}" {{-- Preserve the old input value --}}
                     />
+                    @error('email')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="wb">
@@ -145,6 +156,9 @@
                         placeholder="**************"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
                     />
+                    @error('password')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <button class="vd rj ek rc rg gh lk ml il _l gi hi">
@@ -156,6 +170,7 @@
                     <a class="mk" href="/login"> Sign In </a>
                 </p>
             </form>
+
         </div>
     </section>
     <!-- ===== SignUp Form End ===== -->

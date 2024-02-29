@@ -24,6 +24,8 @@ class RegisterController extends Controller
             'fullname' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
+            'files' => 'required|array',
+            'files.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {

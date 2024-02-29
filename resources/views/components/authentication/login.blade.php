@@ -111,7 +111,11 @@
                         id="email"
                         placeholder="example@gmail.com"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
+                        value="{{ old('email') }}"  {{-- Preserve the old input value --}}
                     />
+                    @error('email')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="wb">
@@ -123,6 +127,9 @@
                         placeholder="**************"
                         class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40"
                     />
+                    @error('password')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <button type="submit" class="vd rj ek rc rg gh lk ml il _l gi hi">
@@ -134,6 +141,7 @@
                     <a class="mk" href="/register"> Sign Up </a>
                 </p>
             </form>
+
         </div>
     </section>
     <!-- ===== SignIn Form End ===== -->
