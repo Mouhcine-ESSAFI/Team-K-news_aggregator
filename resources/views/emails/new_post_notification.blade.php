@@ -46,6 +46,8 @@
         <p>Un nouveau post a été ajouté dans la catégorie que vous suivez.</p>
 
         <p>Merci de suivre notre plateforme!</p>
+
+        <p>Consultez les derniers <a href="http://127.0.0.1:8000/collection">postes</a>.</p>
     </div>
 
     <p class="footer">Cordialement,<br>Votre équipe de notification</p>
