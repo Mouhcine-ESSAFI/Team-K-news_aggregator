@@ -132,7 +132,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="vd rj ek rc rg gh lk ml il _l gi hi">
+                <button type="submit" class="vd bg-blue-700 rj ek rc rg gh lk ml il _l gi hi">
                     Sign In
                 </button>
 
