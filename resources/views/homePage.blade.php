@@ -825,7 +825,7 @@
                             <img class="w-full" src="{{$post->image}}" alt="Blog"/>
 
                             <div class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10">
-                                <a href="{{ route('show.content',$post->slug) }}l" class="vc ek rg lk gh sl ml il gi hi">Read More</a>
+                                <a href="{{ route('show.content',$post->slug) }}" class="vc ek rg lk gh sl ml il gi hi">Read More</a>
                             </div>
                         </div>
 
