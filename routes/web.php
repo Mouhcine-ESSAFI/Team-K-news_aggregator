@@ -56,9 +56,6 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //dashboard
-
-Route::get('/favorites', [favorisController::class, 'showFavorites'])->name('favorites.show');
-
 Route::post('/collection', [favorisController::class,'addToFavoris'])->name('addToFavoris');
 Route::delete('/collection', [favorisController::class,'removeToFavoris'])->name('removeToFavoris');
 
@@ -86,12 +83,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/preferences', [preferenceController::class, 'displayCategories'])->name('preferences.show');
     Route::post('/preferences', [preferenceController::class, 'addPreference'])->name('preferences.add');
 
-    Route::get('/trends', [PostController::class,'showPostsTrends']);
-
     //favorites
-    Route::get('/favorites', function () {
-        return view('News.favorites');
-    });
+    Route::get('/favorites', [favorisController::class, 'showFavorites'])->name('favorites.show');
+
     Route::post('/collection', [favorisController::class, 'addToFavoris'])->name('addToFavoris');
     Route::delete('/collection', [favorisController::class, 'removeToFavoris'])->name('removeToFavoris');
 
@@ -109,6 +103,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/collection', [PostController::class, "showPosts"])->name('showPosts');
 
-Route::get('/trends', [PostController::class, 'allPosts']);
+Route::get('/trends', [PostController::class,'showPostsTrends']);
 
 Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
