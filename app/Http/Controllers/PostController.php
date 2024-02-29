@@ -63,10 +63,12 @@ class PostController extends Controller
         }
 
         $user = Auth::user();
+
         $favoris="";
         if($user) {
             $favoris = Favoris::where('user_id', $user->id)->pluck('post_id');
         }
         return view('News.tendancePage', compact('poststrends', 'categories', 'favoris'));
     }
+
 }

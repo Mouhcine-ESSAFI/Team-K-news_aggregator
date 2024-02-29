@@ -25,7 +25,7 @@ class preferenceController extends Controller
             ]);
         }
 
-        return redirect()->route('preferences.show');
+        return redirect('/');
     }
 
 

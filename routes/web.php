@@ -6,6 +6,7 @@ use App\Http\Controllers\favorisController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RssManage;
 use App\Http\Middleware\AdminMiddleware;
@@ -26,10 +27,8 @@ use App\Http\Controllers\Auth\GoogleController;
 |
 */
 
-//home page
-Route::get('/', function () {
-    return view('homePage');
-});
+
+Route::get('/', [HomeController::class, 'index'])->name('home.page');
 
 Route::middleware(['guest'])->group(function () {
 
@@ -106,3 +105,9 @@ Route::get('/collection', [PostController::class, "showPosts"])->name('showPosts
 Route::get('/trends', [PostController::class,'showPostsTrends']);
 
 Route::get('/posts/{slug}/content', [ContentController::class, "show"])->name("show.content");
+
+Route::get('/profil', [ProfilController::class,'showProfil'])->name('profil');
+
+Route::post('/ajaxupload', [ContentController::class, 'upload']);
+Route::get('/comments/{postId}', [ContentController::class, 'fetchComments']);
+

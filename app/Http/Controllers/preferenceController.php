@@ -10,18 +10,18 @@ class preferenceController extends Controller
         public function addPreference(Request $request)
         {
             $request->validate([
-                'selected_tags' => 'required|array', 
+                'selected_tags' => 'required|array',
             ]);
-        
-            $idUser = '1'; 
-        
+
+            $idUser = '1';
+
             foreach ($request->selected_tags as $categoryId) {
                 Preference::create([
                     'category_id' => $categoryId,
                     'user_id' => $idUser,
                 ]);
             }
-        
+
             return redirect()->route('preferences.show');
         }
 
